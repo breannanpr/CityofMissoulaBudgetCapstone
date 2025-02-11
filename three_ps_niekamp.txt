@@ -1,11 +1,25 @@
-# Progress, Problems and Plans as of January 28, 2025. 
-So far to date I have spent 5 hours and 45 minutues on this project so far not including meetings. I've been using a time and project task tracker called Toggl to see how much time I am spending and keep myself accountable as well. This time has been spend familiarizing myself with the data and starting to use the data in power bi. I think I may have jumped the gun and should have just started in python and R, so I will go back this week and do some exploratory analysis BEFORE completing the dashboard draft. I have met with the client to gain further understanding on the ask for the dashboard and what exactly that dashboard should answer in terms of questions. I have also been in touch just getting access to the platforms that the city uses for data transfer and adjustments. This week, I plan to do the exploratory analysis and also see if there is a way to link wdesk to power bi. 
+###############################
+
+# Progress, Problems and Plans for February 11, 2025
+
+Progress: This past week I was able to gain access to the chains and data prep section of wdesk/workiva platforms. In addition, I've discovered that chains could be used to automate certain linear tasks. There is also a confirmed way to connect wdesk/workiva to PowerBI for the dashboard. Much of this past week has been spent going through documentation; planning out the steps to perform a test of connection or chain; familiarizing myself with the platform and the city's current set up; and creating a few mock ups for the dashboard. I did not make much progress on the creation of the dashboard because I was focusing on the connection aspect first. 
+Problems: When it comes to the actual data, I am confused about how they are defining each variable and what those variables encompass. I think it would be beneficial to create a data dictionary to further explain how the data is laid out and if there are certain known fields for greater analysis. I did have a meeting where the most important variables are outlined, so there is a start to this process but it is not complete. This is something that should be done and would help with the draft of the dashboard for which kpis to put in that make the most sense.
+Plans: I am sending an email to Buck in the morning to ask a couple questions before I perform the test in workiva to see if the chain will work (I'm unsure of the city's usage limits and would like to confirm I am not going to disrupt any current chains by mistake). I am finishing up my draft of the dashboard this and next week (preferably by the end of this working week - but giving myself room for errors and adjustments). I will also plan to continue to work on creating / confirming a data dictionary this week as well.
 
 ###############################
 
-# Progress, Problems and Plans for February 2, 2025. 
+# Progress, Problems and Plans for February 2, 2025
+
 Progress: I did not make much progress this past week as I am still waiting for access to the API/Connection with PowerBI and WDesk. I will send an email right after I submit this to check in on that particular item. I spent most of my time for this project reviewing approximately 8-10 hours of content for quick refresher courses for the tools I am using such as R, Python, and Power BI. I think this gave me more confidence in working with these tools efficiently. 
 Problems: Just having difficulty / taking a bit long to get connected. I will follow up this week and if I don't hear back by this thursday's 1:1 meeting then I would say it's an "issue". 
 Plans: This week I will hit that dashboard hard, and mock it up. Spend more time working through the data and really sit down and do a bulk of work. 
 
 ###############################
+
+# Progress, Problems and Plans as of January 28, 2025
+
+So far to date I have spent 5 hours and 45 minutues on this project so far not including meetings. I've been using a time and project task tracker called Toggl to see how much time I am spending and keep myself accountable as well. This time has been spend familiarizing myself with the data and starting to use the data in power bi. I think I may have jumped the gun and should have just started in python and R, so I will go back this week and do some exploratory analysis BEFORE completing the dashboard draft. I have met with the client to gain further understanding on the ask for the dashboard and what exactly that dashboard should answer in terms of questions. I have also been in touch just getting access to the platforms that the city uses for data transfer and adjustments. This week, I plan to do the exploratory analysis and also see if there is a way to link wdesk to power bi. 
+
+###############################
+
+BEGIN - January 17, 2025 - Initial Kick Off Meeting and Introductions. Project commencement with coming weeks to include access, additional training for workiva/wdesk and additional questions. 
