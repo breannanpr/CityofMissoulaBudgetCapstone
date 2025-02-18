@@ -1,5 +1,15 @@
 ###############################
 
+# Progress, Problems and Plans for February 18, 2025
+
+Progress: This past week, a backup plan was set into motion to create a sharepoint location for the power bi dashboard to link to. Upon having a meeting to discuss the process of how automation works in their instance of workiva it was determined that they would need to pay more to connect a chain directly to power bi. Since it's an annual report that needs to be done, it would be okay to rework the current state of the data and then implement it differently by creating autmations on power bi's side by pointing it to the correct folder in order to display the dashboard. 
+
+Problems: Connecting and implementing the pull appears to be an issue but I think this solution that was created is a good plan to set into motion. Currently I am waiting on access to sharepoint to test and esure the connection works.
+
+Plans: I have sent some emails for follow up meetings and am in the process of preparing the data for the dashboard and confirming a few odd ends for the data dictionary and data understanding. 
+
+###############################
+
 # Progress, Problems and Plans for February 11, 2025
 
 Progress: This past week I was able to gain access to the chains and data prep section of wdesk/workiva platforms. In addition, I've discovered that chains could be used to automate certain linear tasks. There is also a confirmed way to connect wdesk/workiva to PowerBI for the dashboard - however see problem for more. Much of this past week has been spent going through documentation; planning out the steps to perform a test of connection or chain; familiarizing myself with the platform and the city's current set up; and creating a few mock ups for the dashboard. I did not make much progress on the creation of the dashboard because I was focusing on the connection aspect first. 
