@@ -1,5 +1,15 @@
 ###############################
 
+# Progress, Problems and Plans for February 25, 2025
+
+Progress: This past week, I made significant progress on setting the dashboard. I was able to meet with client to confirm direction was good, and they loved it so far. We are on the right track. I discovered that there is additional data needed however, so that will go into the "problems section" for elaboration. I was also able to get access to sharepoint and spent time figuring out how to automate. I think I have a decent strategy to focus on in the next few weeks but would like to discuss it more. 
+
+Problems: There is additional data from their financial accounting system platform that is updated nightly to pull pieces of budget information. Client specified the drill down of "where exactly funds were going" so that the public could really see and transparancy can be more deliberate. This data was "included" in the management review but is not in a workable format. In order to get the data in another / second data set we can manually enter a query in the excel workbook or find a way around that. There is a way to query the financial budget data platform and include it in the nightly update / distribution. Need to spend time diving into that part of the platform as it will open up greater possibilities. 
+
+Plans: This week plan to really "finish" the data access here, and see if that query could be written quickly or the best way to go about this. Can discuss in 1:1 meetings this week. 
+
+###############################
+
 # Progress, Problems and Plans for February 18, 2025
 
 Progress: This past week, a backup plan was set into motion to create a sharepoint location for the power bi dashboard to link to. Upon having a meeting to discuss the process of how automation works in their instance of workiva it was determined that they would need to pay more to connect a chain directly to power bi. Since it's an annual report that needs to be done, it would be okay to rework the current state of the data and then implement it differently by creating autmations on power bi's side by pointing it to the correct folder in order to display the dashboard. 
