@@ -1,5 +1,18 @@
 ###############################
 
+# Progress, Problems and Plans for March 4, 2025
+
+Progress: This past week, I was able to look into automation from sharepoint to powerbi and am currently exploring powerbi data cleaning. I believe I can just use scripts when the data is pulled. I got access to the data from Eden and the raw data from the survey. It's pretty messy so I began working on cleaning it. 
+
+Problems: In the thick of it with automation. I feel like it's just either not clicking in my head or I don't understand how this will work. I think I have a solution but need to learn a bit more about how it works outside of theory. Also working through how to effectively clean the data in powerbi, I am used to just using R or python for this and I think I can do it that way but there are more steps that I am still grasping my head around. Confused about DAX in BI and if that is relevant for this project - I am thinking it is. 
+
+Plans: Finish cleaning the data, get it set up in sharepoint and adjust more of the dashboard. Meet with prof for 1:1 to discuss progress and then keep working. 
+
+Hours: I keeep forgetting to add this so I also updated it for the past weeks. Still using Togl to track my time for this project. 5:15:00 (So far an accumulation of approximately 35-40 hours as some of the time I accidentally forgot to track in the beginning). 
+
+
+###############################
+
 # Progress, Problems and Plans for February 25, 2025
 
 Progress: This past week, I made significant progress on setting the dashboard. I was able to meet with client to confirm direction was good, and they loved it so far. We are on the right track. I discovered that there is additional data needed however, so that will go into the "problems section" for elaboration. I was also able to get access to sharepoint and spent time figuring out how to automate. I think I have a decent strategy to focus on in the next few weeks but would like to discuss it more. 
@@ -7,6 +20,8 @@ Progress: This past week, I made significant progress on setting the dashboard. 
 Problems: There is additional data from their financial accounting system platform that is updated nightly to pull pieces of budget information. Client specified the drill down of "where exactly funds were going" so that the public could really see and transparancy can be more deliberate. This data was "included" in the management review but is not in a workable format. In order to get the data in another / second data set we can manually enter a query in the excel workbook or find a way around that. There is a way to query the financial budget data platform and include it in the nightly update / distribution. Need to spend time diving into that part of the platform as it will open up greater possibilities. 
 
 Plans: This week plan to really "finish" the data access here, and see if that query could be written quickly or the best way to go about this. Can discuss in 1:1 meetings this week. 
+
+Hours: 7:55:51
 
 ###############################
 
@@ -18,6 +33,8 @@ Problems: Connecting and implementing the pull appears to be an issue but I thin
 
 Plans: I have sent some emails for follow up meetings and am in the process of preparing the data for the dashboard and confirming a few odd ends for the data dictionary and data understanding. 
 
+Hours: 7:43:24
+
 ###############################
 
 # Progress, Problems and Plans for February 11, 2025
@@ -27,6 +44,8 @@ Progress: This past week I was able to gain access to the chains and data prep s
 Problems: While there is a confirmed way to connect powerbi to wdesk/workiva, it doesn't seem it's enabled for the city. Others are, but not power bi, I am thinking that I will need to write a script in python to connect them. This needs a bit further investigation. In addition to the first issue, when it comes to the actual data, I am confused about how they are defining each variable and what those variables encompass. I think it would be beneficial to create a data dictionary to further explain how the data is laid out and if there are certain known fields for greater analysis. I did have a meeting where the most important variables are outlined, so there is a start to this process but it is not complete. This is something that should be done and would help with the draft of the dashboard for which kpis to put in that make the most sense. 
 
 Plans: I am sending an email to Buck in the morning to ask a couple questions before I perform the test in workiva to see if the chain will work (I'm unsure of the city's usage limits and would like to confirm I am not going to disrupt any current chains by mistake). I am finishing up my draft of the dashboard this and next week (preferably by the end of this working week - but giving myself room for errors and adjustments). I will also plan to continue to work on creating / confirming a data dictionary this week as well.
+
+Hours: 2:08:24
 
 ###############################
 
@@ -38,11 +57,15 @@ Problems: Just having difficulty / taking a bit long to get connected. I will fo
 
 Plans: This week I will hit that dashboard hard, and mock it up. Spend more time working through the data and really sit down and do a bulk of work. 
 
+Hours: 1 hour
+
 ###############################
 
 # Progress, Problems and Plans as of January 28, 2025
 
 So far to date I have spent 5 hours and 45 minutues on this project so far not including meetings. I've been using a time and project task tracker called Toggl to see how much time I am spending and keep myself accountable as well. This time has been spend familiarizing myself with the data and starting to use the data in power bi. I think I may have jumped the gun and should have just started in python and R, so I will go back this week and do some exploratory analysis BEFORE completing the dashboard draft. I have met with the client to gain further understanding on the ask for the dashboard and what exactly that dashboard should answer in terms of questions. I have also been in touch just getting access to the platforms that the city uses for data transfer and adjustments. This week, I plan to do the exploratory analysis and also see if there is a way to link wdesk to power bi. 
+
+Hours: Jan 1 - Jan 28, 2025: 11:02:41 hours on project. 
 
 ###############################
 
