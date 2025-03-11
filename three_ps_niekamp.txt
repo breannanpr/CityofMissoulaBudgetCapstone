@@ -1,5 +1,17 @@
 ###############################
 
+# Progress, Problems and Plans for March 11, 2025
+
+Progress: Made significant progress with cleaning raw data, the data is nearly workable in powerbi. I am using python to clean the files and prepare them for use. This has so far involved creating and naming functions and then calling them into the process. I am running into a bit of trouble with one of the columns and cleaning it property. I think I may just need to double check my work to ensure that the way I am going about it is the most efficient and best way so far. 
+
+Problems: I am stuck with one column, the trouble is since the data may or may not be present and that is a valid thing, I am unsure of what to do to "clean" this column. In order to create an effective relational diagram, I may need to manually adjust some of the data which I am trying to avoid. I will press into this code further I may just needed to have taken a step back to think about it. 
+
+Plans: Continue to prepare and finish cleaning the data. Once this is complete, I will be able to work on ensuring Power BI points to the correct files, and cleans them appropriately. 
+
+Hours: 10:39:21
+
+###############################
+
 # Progress, Problems and Plans for March 4, 2025
 
 Progress: This past week, I was able to look into automation from sharepoint to powerbi and am currently exploring powerbi data cleaning. I believe I can just use scripts when the data is pulled. I got access to the data from Eden and the raw data from the survey. It's pretty messy so I began working on cleaning it. 
