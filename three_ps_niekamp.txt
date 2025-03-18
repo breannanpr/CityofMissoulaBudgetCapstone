@@ -1,5 +1,17 @@
 ###############################
 
+# Progress, Problems and Plans for March 18, 2025
+
+Progress: Finally was able to figure out a piece of the code I had been wanting to update. I accidentally created two colummns with the same name. This issue has been fixed but now, there are a few more formatting for cleaning the data and preparing it for data visualization as well. There were also some updates to the code where I need to thoroughly examine all the reference accounts for the city and then label them into a data map for the information to be cleaned and categorized appropriately. This took up most of my weekend and I think I am nearly there with figuring it all out. 
+
+Problems: Currently, working on procrastinating. I have found I will do a large stint of time working on this project then set it down for a day or two before I pick it back up. If I pick up the project more frequently I will be able to make more progress and finally finish the parts I am stuck trying to finish. This is a new goal for this upcoming week. 
+
+Plans: Same as last week, but setting a deadline more firm in order to finish cleaning the data. Once complete, I will be able to work on ensuring Power BI points to the correct files, and cleans them appropriately. This will involve migrating my python code to power bi and having power bi do the cleaning of the files and grab the correct files, and then display them in the dashboard. 
+
+Hours: 9:06:23
+
+###############################
+
 # Progress, Problems and Plans for March 11, 2025
 
 Progress: Made significant progress with cleaning raw data, the data is nearly workable in powerbi. I am using python to clean the files and prepare them for use. This has so far involved creating and naming functions and then calling them into the process. I am running into a bit of trouble with one of the columns and cleaning it property. I think I may just need to double check my work to ensure that the way I am going about it is the most efficient and best way so far. 
