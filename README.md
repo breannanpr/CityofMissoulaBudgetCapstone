@@ -1,16 +1,17 @@
 # City of Missoula Budget Capstone Project
 
 
-## Overview
-This is a repository for my capstone project for the City of Missoula's Finance Department. 
-
-Historically, budget reporting and review has been a difficult process to navigate. Gathering data and providing information that is insightful can be a tedious process. The city values and has goals centtered in Housing, Equity and Climate & Resilience. Within these goals, there are some additional focus points that should be given light to: 
+## Project Overview
+Historically, budget reporting and review within the City of Missoula has been a difficult process to navigate. Gathering data and providing information that is insightful can be a tedious process. The city values and has goals centtered in Housing, Equity and Climate & Resilience. Within these goals, there are some additional focus points that should be given light to: 
 1. The city has a mission to ensure that the streets are well-maintained, wastewater and sewage are treated and discharged safely. (Public Works & Mobility)
 2. Emergency services respond when they're needed. (Police & Fire)
 3. Parks are maintained and welcoming. (Parks & Recreation)
 4. Professional organizations that are fiscally responsible, ensure a positive work environment and provides transparent government.  (Administration) 
 
 It is a great mission of Missoula, to enhance transparency and informed decision-making. With the support of Mayor Andrea Davis, the City is working to develop a comprehensive program inventory. The program inventory will allow understanding the basics of each of the City's programs with an accessible summary for each program. "The program summaries will be used to showcase what each program does for our community, how much we invest, and the tangible attributes of each" program. This solution, verbilized by the mayor will demonstrate value for the city and it's constituents. 
+
+## Repository STructure
+
 
 ## Scope
 The scope of this project entails connecting budget data and program inventory information to a dashboard that will be used by the Mayor and the City Council of Missoula to make informed decisions about the budgetary needs and requirements in any given year. In addition to the current year's decision making process, the dashboard will serve as a reflective and interactive tool that can also be used to compare budget data year over year. 
@@ -26,6 +27,9 @@ The Program Inventory Internal Data Collection file includes each program descri
 
 
 ## Methodology
+
+
+## 
 
 
 ## Appendicies 
