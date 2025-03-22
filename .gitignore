@@ -157,3 +157,5 @@ data/*
 pycodestyle
 pylintrc
 mypy.ini
+*.csv
+*.xlsx
