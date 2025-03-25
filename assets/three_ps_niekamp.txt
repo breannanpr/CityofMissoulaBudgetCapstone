@@ -1,5 +1,17 @@
 ###############################
 
+# Progress, Problems and Plans for March 25, 2025
+
+Progress: After meeting last friday, I think I missed an important step of the cleaning process so this week am just working on adjusting that and I think we are nearly done with the cleaning of the files. I also made significant changes to the structure of my github repository in preparation for deadlines due this coming Sunday. I have more work to do but I think this infrastructure currently suits the project. 
+
+Problems: None currently aside from trying to decide what the best digital product would be for this project and information. My aspirations and current time limitations are not aligning so I might just make it simple but this is the current "problem". 
+
+Plans: Complete the cleaning with new steps, complete more repository updates for code, submit the code samples and work on the digital product. I still have yet to put the raw files in sharepoint and get this set up but I think this can be accomplished quickly once code is finished with pre-visualization preparations. 
+
+Hours: 16:04:52
+
+###############################
+
 # Progress, Problems and Plans for March 18, 2025
 
 Progress: Finally was able to figure out a piece of the code I had been wanting to update. I accidentally created two colummns with the same name. This issue has been fixed but now, there are a few more formatting for cleaning the data and preparing it for data visualization as well. There were also some updates to the code where I need to thoroughly examine all the reference accounts for the city and then label them into a data map for the information to be cleaned and categorized appropriately. This took up most of my weekend and I think I am nearly there with figuring it all out. 
