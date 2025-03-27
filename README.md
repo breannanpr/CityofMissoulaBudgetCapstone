@@ -10,24 +10,43 @@ By combining budget data and program-level survey responses, this tool enables b
 
 The repository is organized as follows: 
 CITYOFMISSOULABUDGETCAPSTONE/
+
 │
+
 ├── assets/                              # Supporting documents
+
 │   └── three_ps_niekamp.txt             # Regular progress updates
+
 │
+
 ├── code/                                # Project notebooks and scripts
+
 │   └── citydata_exploratory.ipynb       # Data cleaning and transformation pipeline
+
 │
+
 ├── data/                                # Raw and processed datasets
+
 │   ├── FY24_Expenditure_Status.xlsx
+
 │   ├── FY24_Revenue_Expense_Data.xlsx
+
 │   ├── Program_Inventory_Internal_Data_Collection.xlsx
+
 │   ├── cleaned_expenditure_status.csv
+
 │   ├── cleaned_program_inventory.csv
+
 │   ├── cleaned_missoula_budget_data.xlsx
+
 │   └── testing_expend_status.csv        # (dev/test file)
+
 │
+
 ├── .gitignore                           # Git tracking rules
+
 ├── README.md                            # Project overview and documentation
+
 
 ## Data Sources and Overview
 - FY24_Expenditure_Status.xlsx - Budget account-level data with activity, dpeartment and objective codes. Export from Eden.
@@ -36,15 +55,24 @@ CITYOFMISSOULABUDGETCAPSTONE/
 
 These files are exported from the City of Missoula's Workiva (Wdesk) instance and financial software accordingly. 
 
+
 ### Key Definitions
 **Program**: City-funded service or function with a 6-digit code, representing a specific output or public-facing activity. 
+
 **Program Description**: Short summary explaining what the program does, why it exists and how it benefits the community. 
+
 **Mandate**: Legally required (federal, state or court-appointed). Does not include contract-based or optional services. 
+
 **Service Requirements (External)**: Rules imposed by external entities (ex., regulatory agencies), even if the program itself isn't mandated.
+
 **Reliance**: Community dependence or risk of disruption if removed from the community. High reliance = wide usage, few alternatives, or critical outcomes. 
+
 **Trend**: Indicates whether the program's demand is growing, stable, declining or evolving due to external factors. 
+
 **Risk**: Assesses potential challenges in the next 1-3 years (ex., funding cuts, staffing issues, legal changes).
+
 **Internal Use**: Data used internally for planning and analysis, but not necessarily shared publicly. 
+
 
 ## Methodology
 
@@ -56,8 +84,10 @@ These three files will be uploaded into the Sharepoint Site: ***"Missoula PBI - 
 
 From this, the files will undergo a cleaning and transformation process, as elaborated in the next section. 
 
+
 ### Cleaning & Transformation Process
 Data cleaning and transformation were conducted in Python using pandas, janitor, and other helpful libraries. 
+
 
 #### Libraries Used
 - pandas, numpy: data wrangling
@@ -65,6 +95,7 @@ Data cleaning and transformation were conducted in Python using pandas, janitor,
 - janitor, .clean_names(): header normalization
 - tqdm, re, os, chardet: helpful cleaning utilities
 - missingno, matplotlib.pyplot: EDA tools
+
 
 #### Steps Summary
 **[Currently being revised due to different approach that will follow the below laid out steps.]**
@@ -76,6 +107,7 @@ Data cleaning and transformation were conducted in Python using pandas, janitor,
 5. Header Expansion: Expanding multi-column headers (ex., Mandate in Program Inventory)
 6. Whitespace & Case: Stripping extra spaces and applying title case to key labels. 
 7. Normalization: All columns are converted to snake_case with clean_names().
+
 
 ### Power BI Integration
 **[Currently in progress, will be adding more information to this section. Currently the process is as below]**
