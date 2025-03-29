@@ -139,7 +139,7 @@ The cleaned data will be visualized in Power BI to enable:
 8. Personnel (G27): Budget for salaries, benefits, and direct staff compensation.
 9. O&M (G28): Operational costs and maintenance-related expenses.
 10. Debt (G29): Costs related to debt service obligations.
-11. Grant (G30): Grant funding received to support the program.
+11. Grant (G30): Costs related to Grant paid to other organizations.
 12. Transfers (G31): Transfers between funds or departments.
 13. Captial (G32): Capital expenditures for infrastructure or equipment.
 14. Total Expenditures (G33): Sum of all budgeted costs for the program.
