@@ -1,161 +1,125 @@
+# ========================
+# 📁 Project-Specific Ignore Rules
+# ========================
 
-data/FY24_Expenditure_Status.xlsx
-data/FY24_Revenue_Expense_Data.xlsx
-data/Program_Inventory_Internal_Data_Collection.xlsx
+# Ignore raw input data files
+data/
+
+# Include cleaned CSVs (used in app)
+!cleaned_outputs/
+!cleaned_outputs/*.csv
+
+# Jupyter notebooks – keep
+!*.ipynb
+
+# Streamlit-generated cache/data
+.streamlit/
+.streamlit/*
+
+# Analyst/editor environment
 .Rhistory
 .RData
 
-# Byte-compiled / optimized / DLL files
+# Ignore all Excel files (optional)
+*.xlsx
+
+# ========================
+# 🐍 Python + VSCode Environment
+# ========================
+
+# Virtual environments
+.env
+.venv
+ENV/
+env/
+env.bak/
+venv/
+venv.bak/
+
+# Python artifacts
 __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
+# Distribution
+*.egg
+*.egg-info/
 dist/
-downloads/
-eggs/
+build/
+wheels/
 .eggs/
+sdist/
+develop-eggs/
 lib/
 lib64/
 parts/
-sdist/
-var/
-wheels/
 share/python-wheels/
-*.egg-info/
+.Python
 .installed.cfg
-*.egg
 MANIFEST
 
 # PyInstaller
-*.manifest
 *.spec
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
+# Test + coverage reports
+.pytest_cache/
 .tox/
 .nox/
-.coverage
-.coverage.*
+coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
+htmlcov/
 .hypothesis/
-.pytest_cache/
-cover/
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
+# Logs
 *.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Flask stuff:
-instance/
-.webassets-cache
+# IDEs
+.idea/
+.vscode/
+.ropeproject/
+.spyderproject
+.spyproject
 
-# Scrapy stuff:
-.scrapy
+# Linting
+.mypy_cache/
+.pyre/
+.pytype/
+.dmypy.json
+black/
+.flake8
+pylintrc
+mypy.ini
 
-# Sphinx documentation
+# Docs
 docs/_build/
+site/
+
+# ========================
+# 🍳 Optional Tools & Misc
+# ========================
 
 # PyBuilder
 .pybuilder/
 target/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-!*.ipynb
+# Sphinx
+*.mo
+*.pot
 
-# IPython
-profile_default/
-ipython_config.py
+# SageMath
+*.sage.py
+
+# MkDocs
+/site/
+
+# Jupyter auto-checkpoints
+.ipynb_checkpoints
 
 # pyenv
 .python-version
-
-# pipenv
-#Pipfile.lock
-
-# poetry
-#poetry.lock
-
-# pdm
-.pdm.toml
-.pdm-python
-.pdm-build/
-
-# PEP 582
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#.idea/
-
-## adding in the data ignore
-data/*
-
-# PEP 8 linters and formatters
-.black/
-.flake8
-pycodestyle
-pylintrc
-mypy.ini
-*.csv
-*.xlsx
