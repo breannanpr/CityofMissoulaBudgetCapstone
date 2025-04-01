@@ -1,5 +1,19 @@
 ###############################
 
+# Progress, Problems and Plans for April 1, 2025
+
+Progress: I've completely scrapped the project. 
+
+Just kidding. A lot was accomplished this past weekend. The data is finally in a state of workability, some analysis and work was conducted surrounding the exploratory analysis and the first draft of the digital product is complete. There is a good amount of work to be done on this and then finishing the dashboard. 
+
+Problems: None currently to report. 
+
+Plans: Finish functionality and content within the digital product and finalize the dashboard for review. 
+
+Hours This Week: 18:07:36
+
+###############################
+
 # Progress, Problems and Plans for March 25, 2025
 
 Progress: After meeting last friday, I think I missed an important step of the cleaning process so this week am just working on adjusting that and I think we are nearly done with the cleaning of the files. I also made significant changes to the structure of my github repository in preparation for deadlines due this coming Sunday. I have more work to do but I think this infrastructure currently suits the project. 
@@ -8,7 +22,7 @@ Problems: None currently aside from trying to decide what the best digital produ
 
 Plans: Complete the cleaning with new steps, complete more repository updates for code, submit the code samples and work on the digital product. I still have yet to put the raw files in sharepoint and get this set up but I think this can be accomplished quickly once code is finished with pre-visualization preparations. 
 
-Hours: 16:04:52
+Hours This Week: 16:04:52
 
 ###############################
 
@@ -20,7 +34,7 @@ Problems: Currently, working on procrastinating. I have found I will do a large 
 
 Plans: Same as last week, but setting a deadline more firm in order to finish cleaning the data. Once complete, I will be able to work on ensuring Power BI points to the correct files, and cleans them appropriately. This will involve migrating my python code to power bi and having power bi do the cleaning of the files and grab the correct files, and then display them in the dashboard. 
 
-Hours: 9:06:23
+Hours This Week: 9:06:23
 
 ###############################
 
@@ -32,7 +46,7 @@ Problems: I am stuck with one column, the trouble is since the data may or may n
 
 Plans: Continue to prepare and finish cleaning the data. Once this is complete, I will be able to work on ensuring Power BI points to the correct files, and cleans them appropriately. 
 
-Hours: 10:39:21
+Hours This Week: 10:39:21
 
 ###############################
 
@@ -44,7 +58,7 @@ Problems: In the thick of it with automation. I feel like it's just either not c
 
 Plans: Finish cleaning the data, get it set up in sharepoint and adjust more of the dashboard. Meet with prof for 1:1 to discuss progress and then keep working. 
 
-Hours: I keeep forgetting to add this so I also updated it for the past weeks. Still using Togl to track my time for this project. 5:15:00 (So far an accumulation of approximately 35-40 hours as some of the time I accidentally forgot to track in the beginning). 
+Hours This Week: I keeep forgetting to add this so I also updated it for the past weeks. Still using Togl to track my time for this project. 5:15:00 (So far an accumulation of approximately 35-40 hours as some of the time I accidentally forgot to track in the beginning). 
 
 
 ###############################
@@ -57,7 +71,7 @@ Problems: There is additional data from their financial accounting system platfo
 
 Plans: This week plan to really "finish" the data access here, and see if that query could be written quickly or the best way to go about this. Can discuss in 1:1 meetings this week. 
 
-Hours: 7:55:51
+Hours This Week: 7:55:51
 
 ###############################
 
@@ -69,7 +83,7 @@ Problems: Connecting and implementing the pull appears to be an issue but I thin
 
 Plans: I have sent some emails for follow up meetings and am in the process of preparing the data for the dashboard and confirming a few odd ends for the data dictionary and data understanding. 
 
-Hours: 7:43:24
+Hours This Week: 7:43:24
 
 ###############################
 
@@ -81,7 +95,7 @@ Problems: While there is a confirmed way to connect powerbi to wdesk/workiva, it
 
 Plans: I am sending an email to Buck in the morning to ask a couple questions before I perform the test in workiva to see if the chain will work (I'm unsure of the city's usage limits and would like to confirm I am not going to disrupt any current chains by mistake). I am finishing up my draft of the dashboard this and next week (preferably by the end of this working week - but giving myself room for errors and adjustments). I will also plan to continue to work on creating / confirming a data dictionary this week as well.
 
-Hours: 2:08:24
+Hours This Week: 2:08:24
 
 ###############################
 
@@ -93,7 +107,7 @@ Problems: Just having difficulty / taking a bit long to get connected. I will fo
 
 Plans: This week I will hit that dashboard hard, and mock it up. Spend more time working through the data and really sit down and do a bulk of work. 
 
-Hours: 1 hour
+Hours This Week: 1 hour
 
 ###############################
 
@@ -101,7 +115,7 @@ Hours: 1 hour
 
 So far to date I have spent 5 hours and 45 minutues on this project so far not including meetings. I've been using a time and project task tracker called Toggl to see how much time I am spending and keep myself accountable as well. This time has been spend familiarizing myself with the data and starting to use the data in power bi. I think I may have jumped the gun and should have just started in python and R, so I will go back this week and do some exploratory analysis BEFORE completing the dashboard draft. I have met with the client to gain further understanding on the ask for the dashboard and what exactly that dashboard should answer in terms of questions. I have also been in touch just getting access to the platforms that the city uses for data transfer and adjustments. This week, I plan to do the exploratory analysis and also see if there is a way to link wdesk to power bi. 
 
-Hours: Jan 1 - Jan 28, 2025: 11:02:41 hours on project. 
+Hours This Week: Jan 1 - Jan 28, 2025: 11:02:41 hours on project. 
 
 ###############################
 
