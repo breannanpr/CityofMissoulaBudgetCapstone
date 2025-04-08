@@ -1,5 +1,17 @@
 ###############################
 
+# Progress, Problems and Plans for April 8, 2025
+
+Progress: I was able to get the dashboard in working order for review by client and professor. More refining in analysis and working on the next draft of the written product due this evening to classmates for peer review. 
+
+Problems: No problems just yet, I think the problems might arrise with the next phase which would be to transfer my working python cleaning code into Power BI. Power BI will be the driving force of the cleaning for the data, and from there should point to the correct sharepoint folder, pull the dirty data, create new data that is clean within the platform and produce the dashboard pages I have created. 
+
+Plans: This week I will be exploring the import and automation plans for this project, refining the dashboard pages, and the digital product as well for the next review. 
+
+Hours This Week: 15:12:10
+
+###############################
+
 # Progress, Problems and Plans for April 1, 2025
 
 Progress: I've completely scrapped the project. 
