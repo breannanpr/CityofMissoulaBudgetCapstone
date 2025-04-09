@@ -12,27 +12,49 @@ The repository is organized as follows:
 
 CityofMissoulaBudgetCapstone/
 │
+
 ├── assets/                        # Images and app visuals
+
 │   ├── welcome_missoula.jpg
+
 │   ├── missoula_city_snow.JPG
+
 │   ├── downtown_river.jpg
+
 │   └── analyst.jpg
+
 │
+
 ├── cleaned_outputs/              # Finalized data used by the app + dashboard
+
 │   ├── cleaned_expenditure_status.csv
+
 │   └── cleaned_program_inventory.csv
+
 │
+
 ├── code/                         # Jupyter notebooks and scripts
+
 │   ├── citydata_01_cleaning.ipynb
+
 │   └── citydata_02_exploratory.ipynb
+
 │
+
 ├── data/                         # Raw internal City of Missoula data (ignored)
+
 │   └── *.xlsx
+
 │
+
 ├── Budget_Director_App.py        # Streamlit app entry point
+
 ├── requirements.txt              # Python dependencies
+
 ├── README.md                     # You’re reading it!
+
 └── .gitignore                    # Clean Git tracking
+
 
 ## Data Sources and Overview
 - FY24_Expenditure_Status.xlsx - Budget account-level data with activity, dpeartment and objective codes. Export from Tyler Edens.
