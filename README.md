@@ -11,6 +11,7 @@ By combining budget data and program-level survey responses, this tool enables b
 The repository is organized as follows: 
 
 CityofMissoulaBudgetCapstone/
+
 │
 
 ├── assets/                        # Images and app visuals
