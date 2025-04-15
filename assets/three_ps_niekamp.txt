@@ -1,5 +1,17 @@
 ###############################
 
+# Progress, Problems and Plans for April 15, 2025
+
+Progress: Made significant progress on the dashboard, narrowed scope and usecase for that. Meeting and revising with client more frequently this past week to ensure solid and sound product! 
+
+Problems: Need to revise / rethink digital product, client would like this to be more internal as concern for storytelling may be too easily misinterpreted. Meeting with prof tomorrow to discuss, but I think we can pivot easily. 
+
+Plans: Revise digital product, work on finishing code to refine a few things that became aparent when working in dashboard. Confirming when to test first "live" drop in sharepoint with dashboard, solidifying final pieces. 
+
+Hours This Week: 9:32:42 ~ lighter on time due to working on peer reviews (also excluding 2 meetings that I didn't track by mistake). 
+
+###############################
+
 # Progress, Problems and Plans for April 8, 2025
 
 Progress: I was able to get the dashboard in working order for review by client and professor. More refining in analysis and working on the next draft of the written product due this evening to classmates for peer review. 
