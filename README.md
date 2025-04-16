@@ -10,6 +10,7 @@ By combining budget data and program-level survey responses, this tool enables b
 
 The repository is organized as follows: 
 
+```
 CityofMissoulaBudgetCapstone/
 
 │
@@ -55,16 +56,18 @@ CityofMissoulaBudgetCapstone/
 ├── README.md                     # You’re reading it!
 
 └── .gitignore                    # Clean Git tracking
+```
 
 
 ## Data Sources and Overview
 - FY24_Expenditure_Status.xlsx - Budget account-level data with activity, dpeartment and objective codes. Export from Tyler Edens.
-- FY24_Revenue_Expense_Data.xlsx - Multi-sheet revenue, expense, and status exports. Export from Tyler Edens. 
 - Program_Inventory_Internal_Data_Collection.xlsx - Survey-based program intake / inventory that includes attributes about specific programming (mandates, trends, risks, etc.) Export from City of Missoula Workiva Instance. 
 
 These files are exported from the City of Missoula's Workiva (Wdesk) instance and financial software accordingly. 
 
 ## Methodology
+
+The City of Missoula focuses on priority based budgeting practices. This is essential given that many programs are required by various factors. Because this topic is easily misconstrued it is essential that I define a few of the concepts surrounding terminology used in this project. Below are some key definitions that further explain how we understand both of our datasets; program inventory and expenditure status. 
 
 ### Key Definitions
 **Program**: City-funded service or function with a 6-digit code, representing a specific output or public-facing activity. 
@@ -86,107 +89,121 @@ These files are exported from the City of Missoula's Workiva (Wdesk) instance an
 
 ### Extraction Process
 **[Currently in progress of implementation]**
-City of Missoula employee will download data beginning January 1, 2024 through current year to ensure and maintain accuracy for year over year comparison of both program inventory data and financial data. In all there will be three files; Expenditure Status, Revenue Expense and Program Inventory Internal Data Collection. 
+In order to begin a refreshed cycle of visualizing the City of Missoula's Program Inventory data, a City of Missoula employee will download data from both the Workiva Platform (Program Inventory Dataset) and Tyler Edens Platform (Expenditure Status Dataset) beginning January 1, 2024 through the current applicable year. Ensuring the dashboarding tool maintain accuracy for year over year comparisons. In all there will be two files; Expenditure Status and Program Inventory Internal Data Collection. 
 
-These three files will be uploaded into the Sharepoint Site: ***"Missoula PBI - City Program Inventory Budget Breakdown - All Documents"***. 
+These three files will be uploaded into the Sharepoint Site: ***"[Missoula PBI - City Program Inventory Budget Breakdown](https://cityofmissoulagcc.sharepoint.com/sites/MissoulaPBI/CPIBB/Forms/AllItems.aspx)"***. 
 
-From this, the files will undergo a cleaning and transformation process, as elaborated in the next section. 
+From this, the files will automatically undergo a cleaning and transformation process, as elaborated in the following section. 
 
 
 ### 🧹 Cleaning & Transformation Process
-All cleaning is conducted in Python using modular, documented functions that support automation and integration with both Power BI and standalone tools like Streamlit.
+All cleaning is conducted in Python using modular, documented functions that support automation and integration with the Power BI Platform. 
 
 #### 🧰 Libraries Used
-pandas, numpy: Data wrangling
+**pandas, numpy:** Data wrangling
 
-openpyxl: Excel file I/O
+**openpyxl:** Excel file I/O
 
-janitor: Header normalization and chaining helpers
+**janitor:** Header normalization and chaining helpers
 
-tqdm, re, os, chardet: Cleaning utilities
+**tqdm, re, os, chardet:** Cleaning utilities
 
-missingno, matplotlib.pyplot: EDA visual tools
+*missingno, matplotlib.pyplot:* EDA visual tools
 
 #### 🧪 Steps Summary
-Step 1: Import Libraries
+**Step 1:** Import Libraries
 Grouped by function — standard Python, text parsing, Excel reading, and visualization.
 
-Step 2: Define Cleaning Functions
+**Step 2:** Define Cleaning Functions
 Modular helpers support reuse and clarity:
 
-drop_unnamed_columns(): Removes Excel filler columns
+```
+drop_unnamed_columns() ## Removes Excel filler columns
 
-clean_numeric_column(): Fixes trailing .0 artifacts
+clean_numeric_column() ## Fixes trailing .0 artifacts
 
-clean_identifiers(): Zero-pads fund/dept/activity codes
+clean_identifiers() ##Zero-pads fund/dept/activity codes
 
-expand_multicolumn_headers(): Converts survey sections like "Mandate" into structured columns
+expand_multicolumn_headers() ##Converts survey sections like "Mandate" into structured columns
 
-apply_department_and_fund_mappings(): Human-readable mappings for city codes
+apply_department_and_fund_mappings() ##Human-readable mappings for city codes
 
-strip_whitespace_and_standardize(): Cleans casing and trailing spaces
+strip_whitespace_and_standardize() ##Cleans casing and trailing spaces
 
-remove_trailing_underscores(): Final polish on column names
+remove_trailing_underscores() ##Final polish on column names
+```
 
-Step 3: Load Raw Files
+**Step 3:** Load Raw Files
 Reads three Excel exports from SharePoint:
 
 Loads specific sheets (vs. all) for efficiency
 
 Handles encoding and sheet detection using openpyxl
 
-Step 4: Expenditure Status Filtering
+**Step 4:** Expenditure Status Filtering
 Removes subtotal/blank rows
 
 Confirms numeric validity
 
 Preserves departmental-level breakdown
 
-Step 5: Account Code Decomposition
-Breaks out account_number into:
-fund_no, dept_no, activity_code, object_code, sub_object_code
+**Step 5:** Account Code Decomposition
+Breaks out ```account_number``` into:
+
+```
+fund_no, ## related to four digit fund code
+dept_no, ## related to three digit department code
+activity_code, ## related to six digit unique activity codes
+object_code, ## related to three digit budget object code
+sub_object_code ## related to three digit sub budget object code
+
+```
 
 Handles malformed or missing subcodes (like 0, 00X, or empty strings)
 
-Step 6: Program Inventory Header Expansion
+**Step 6:** Program Inventory Header Expansion
 Converts wide format survey headers (e.g. "Mandate (E41, H41, E43)") into proper named fields
 
 Uses mapping logic to apply consistent schema
 
-Step 7: Clean Program Inventory
+**Step 7:** Clean Program Inventory
 Standardizes IDs (fund, dept_no, activity)
 
 Applies mappings to department and fund_name
 
 Fills empty responses with "blank" for BI compatibility
 
-Step 8: Normalize Column Names
+**Step 8:** Normalize Column Names
 Converts all columns to snake_case using janitor.clean_names()
 
 Removes trailing _ characters
 
 Applies across both program and revenue workbooks
 
-Step 9: Validate Structure
-missingno.matrix() confirms data completeness
+**Step 9:** Validate Structure
 
-.describe() and .info() checks used on each dataset
+```
+missingno.matrix() ##confirms data completeness
+
+.describe() and .info() ##checks used on each dataset
+
+```
 
 Spot checks confirm no corrupted rows or null-heavy fields
 
 Step 10: Apply Final Mappings
-Merges dept_map and fund_map for readability
+Merges ```dept_map``` and ```fund_map``` for readability
 
 Unmapped entries are labeled "unmapped" for visibility
 
-Step 11: Export Cleaned Files
+**Step 11:** Export Cleaned Files
 Final files are saved to cleaned_outputs/ for use in:
 
-Power BI dashboard
+Power BI Dashboard
 
-Streamlit app
+Streamlit Hosted Internal Training Tool
 
-Future year-over-year reporting
+Built in future year-over-year reporting features
 
 Exported Outputs:
 
@@ -194,32 +211,43 @@ cleaned_expenditure_status.csv
 
 cleaned_program_inventory.csv
 
-### Streamlit Digital Product
-The Streamlit app lets you experience budget tradeoffs by allocating funds across Housing, Climate, Equity, and Safety.
+### Streamlit Digital Product: Internal Training Tool
+The Streamlit app allows the user to experience what it is like to be included in the budget planning process in the City of Missoula. Whether you are planning to run for city council, mayor or support the city by joining the finance department - This tool educates understanding of budget tradeoffs by allocating funds across Housing, Climate, Equity, and Safety using priority-based budgeting practices.
 
 Explore:
-- Program risks and mandates
-- Department spending
-- Strategic goal alignment
-- The impact of your funding choices
+- Understanding how program risks, requirements and mandates reduce available budget
+- Understanding how strategic goals align with priority-based budgeting
+- Understanding the breakdown of what is included in all of the budgeted costs for a program. 
 
-Launch App (Streamlit Cloud): https://mtbudgetdirectorapp25.streamlit.app/
-View the Full Code: Budget_Director_App.py
+[Launch App (Streamlit Cloud)](https://mtbudgetdirectorapp25.streamlit.app/)
+
+*View the Full Code:* Budget_Director_App.py
 
 ### Power BI Integration
 **[Currently in progress, will be adding more information to this section. Currently the process is as below]**
+
 This pipeline is automated directly within Power BI. 
-1. Beginning with the SharePoint File Drop 
+**1. Beginning with the SharePoint Library File Drop **
 
-Raw .xlsx files (Expenditure, Revenue/Expense, Program Inventory) are uploaded to a desginated SharePoint folder: 
-- Missoula PBI - City Program Inventory Budget Breakdown - All Documents
+Raw .xlsx files (Expenditure Status, Program Inventory) are uploaded to the desginated *yellow* SharePoint folder "01_raw_data". 
+![Screenshot of SharePoint Library View](/assets/sharepoint_library_view.png)
 
-2. Power BI Python Script
+File format "Expenditure_Status.xlsx" for Expenditure Status. 
 
-Power BI will: 
-- Pull the raw files directly from SharePoint
-- Execute the same cleaning pipeline using the Python Script inside (citydata_01_cleaning.py)
-- Generate cleaned, in-memory dataframes used for dashboard visualizations
+File Format: "Program_Inventory_Internal_Data_Collection.xlsx" for Program Inventory. 
+
+**NOTE:** It is essential that these file names are accurate for the integrity of the data cleaning process. Overwrite existing file when dropping them into the SharePoint Library. 
+
+Once the up to date files are uploaded, step two will automatically begin the extraction, transformation / cleaning process and load the cleaned datasets into the green second folder located in the SharePoint Library. 
+
+**2. Power BI Python Script**
+
+*The Power BI Platform will:* 
+- Extract the raw files directly from SharePoint Library
+- Transform / Clean both raw data files, executing the same cleaning pipeline that is created here in this repository (/code/citydata_01_cleaning.py). 
+- Load the cleaned, in-memory dataframes used for dashboard visualizations into the SharePoint Library 02_cleaned_outputs *green* folder. 
+
+Once this process is complete, the dashboard should update to reflect the new data accordingly. 
 
 3. No Pre-Clean Required
 
