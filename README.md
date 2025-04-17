@@ -12,49 +12,27 @@ The repository is organized as follows:
 
 ```
 CityofMissoulaBudgetCapstone/
-
 │
-
 ├── assets/                        # Images and app visuals
-
-│   ├── welcome_missoula.jpg
-
-│   ├── missoula_city_snow.JPG
-
-│   ├── downtown_river.jpg
-
-│   └── analyst.jpg
-
+│   ├── welcome_missoula.jpg 
+│   ├── missoula_city_snow.JPG 
+│   ├── downtown_river.jpg 
+│   └── analyst.jpg 
 │
-
 ├── cleaned_outputs/              # Finalized data used by the app + dashboard
-
 │   ├── cleaned_expenditure_status.csv
-
 │   └── cleaned_program_inventory.csv
-
 │
-
 ├── code/                         # Jupyter notebooks and scripts
-
 │   ├── citydata_01_cleaning.ipynb
-
 │   └── citydata_02_exploratory.ipynb
-
 │
-
 ├── data/                         # Raw internal City of Missoula data (ignored)
-
 │   └── *.xlsx
-
 │
-
 ├── Budget_Director_App.py        # Streamlit app entry point
-
 ├── requirements.txt              # Python dependencies
-
 ├── README.md                     # You’re reading it!
-
 └── .gitignore                    # Clean Git tracking
 ```
 
@@ -122,15 +100,15 @@ drop_unnamed_columns() ## Removes Excel filler columns
 
 clean_numeric_column() ## Fixes trailing .0 artifacts
 
-clean_identifiers() ##Zero-pads fund/dept/activity codes
+clean_identifiers() ## Zero-pads fund/dept/activity codes
 
-expand_multicolumn_headers() ##Converts survey sections like "Mandate" into structured columns
+expand_multicolumn_headers() ## Converts survey sections like "Mandate" into structured columns
 
-apply_department_and_fund_mappings() ##Human-readable mappings for city codes
+apply_department_and_fund_mappings() ## Human-readable mappings for city codes
 
-strip_whitespace_and_standardize() ##Cleans casing and trailing spaces
+strip_whitespace_and_standardize() ## Cleans casing and trailing spaces
 
-remove_trailing_underscores() ##Final polish on column names
+remove_trailing_underscores() ## Final polish on column names
 ```
 
 **Step 3:** Load Raw Files
@@ -152,9 +130,13 @@ Breaks out ```account_number``` into:
 
 ```
 fund_no, ## related to four digit fund code
+
 dept_no, ## related to three digit department code
+
 activity_code, ## related to six digit unique activity codes
+
 object_code, ## related to three digit budget object code
+
 sub_object_code ## related to three digit sub budget object code
 
 ```
@@ -167,14 +149,14 @@ Converts wide format survey headers (e.g. "Mandate (E41, H41, E43)") into proper
 Uses mapping logic to apply consistent schema
 
 **Step 7:** Clean Program Inventory
-Standardizes IDs (fund, dept_no, activity)
+Standardizes IDs (```fund, dept_no, activity```)
 
 Applies mappings to department and fund_name
 
 Fills empty responses with "blank" for BI compatibility
 
 **Step 8:** Normalize Column Names
-Converts all columns to snake_case using janitor.clean_names()
+Converts all columns to ```snake_case``` using ```janitor.clean_names()```
 
 Removes trailing _ characters
 
@@ -183,15 +165,15 @@ Applies across both program and revenue workbooks
 **Step 9:** Validate Structure
 
 ```
-missingno.matrix() ##confirms data completeness
+missingno.matrix()           ## confirms data completeness
 
-.describe() and .info() ##checks used on each dataset
+.describe() and .info()      ## checks used on each dataset
 
 ```
 
 Spot checks confirm no corrupted rows or null-heavy fields
 
-Step 10: Apply Final Mappings
+**Step 10:** Apply Final Mappings
 Merges ```dept_map``` and ```fund_map``` for readability
 
 Unmapped entries are labeled "unmapped" for visibility
@@ -227,16 +209,18 @@ Explore:
 **[Currently in progress, will be adding more information to this section. Currently the process is as below]**
 
 This pipeline is automated directly within Power BI. 
-**1. Beginning with the SharePoint Library File Drop **
 
-Raw .xlsx files (Expenditure Status, Program Inventory) are uploaded to the desginated *yellow* SharePoint folder "01_raw_data". 
+**1. Beginning with the SharePoint Library File Drop**
+
+Raw .xlsx files (Expenditure Status, Program Inventory) are uploaded to the desginated *yellow* SharePoint folder "01_raw_data".
+
 ![Screenshot of SharePoint Library View](/assets/sharepoint_library_view.png)
 
 File format "Expenditure_Status.xlsx" for Expenditure Status. 
 
 File Format: "Program_Inventory_Internal_Data_Collection.xlsx" for Program Inventory. 
 
-**NOTE:** It is essential that these file names are accurate for the integrity of the data cleaning process. Overwrite existing file when dropping them into the SharePoint Library. 
+**NOTE: It is essential that these file names are accurate for the integrity of the data cleaning process. Overwrite existing file when dropping them into the SharePoint Library.**
 
 Once the up to date files are uploaded, step two will automatically begin the extraction, transformation / cleaning process and load the cleaned datasets into the green second folder located in the SharePoint Library. 
 
@@ -249,7 +233,7 @@ Once the up to date files are uploaded, step two will automatically begin the ex
 
 Once this process is complete, the dashboard should update to reflect the new data accordingly. 
 
-3. No Pre-Clean Required
+**3. No Pre-Clean Required**
 
 Users only need to upload raw files. The cleaning script takes care of the rest - cleaning, mapping, and shaping all the data in real-time. 
 
@@ -257,19 +241,21 @@ Users only need to upload raw files. The cleaning script takes care of the rest 
 
 ***[Currently in progress, this is how the process will be laid out in the future]***
 Power BI will support: 
-- Filtering by Fund, Department, Program and Activity
+- Maximum filtering by fiscal year, fund, trend (demand), mandate, service level, risk type, cost recovery, and reliance. 
 - Visual Summaries for: 
-    - Mandates
     - Strategic Goal Alignment
-    - Program Risk & Demand
-    - Operational vs Personnel Costs
-- Investment-to-impact visualizations
-- Future year-over-year comparisons (planning for multi-year tracking and comparison)
+    - Budget by Program and Department
+    - Understanding Mandated and Service Level Requirements 
+    - Understanding Cost Breakdown by Capital, O&M, Personnel, Grant, Total Expenditures and Cost Recovery (%)
+
+![Placeholder for Dashboard Embedded View #1](assets/dashboard_view_01.png)
+
+![Placeholder for Dashboard Embedded View #2](assets/dashboard_view_02.png)
 
 ### Exploratory Analysis
-The notebook citydata_02_exploratory.ipynb dives deep into the cleaned data to identify patterns, ensure data integrity, and inform both the app and dashboard. This step is essential for validating the success of the cleaning process and surfacing analytical insights before building visualizations.
+The notebook [citydata_02_exploratory.ipynb](code/citydata_02_exploratory.ipynb) dives into the cleaned data to identify patterns, ensure data integrity, and inform both the app and dashboard. This step is essential for validating the success of the cleaning process and surfacing analytical insights before building visualizations.
 
-📥 Step 1: Load Data
+**Step 1: Load Data**
 Both cleaned CSVs are loaded:
 
 cleaned_expenditure_status.csv
@@ -280,10 +266,10 @@ cleaned_program_inventory.csv
 ✅ Expected shapes: ~2,200 expenditure rows, ~375 program rows
 ✅ Structure aligns with expectations, no null or corrupted columns
 
-🔍 Step 2: Data Structure and Health Checks
-Used info() and .describe() to assess completeness and distributions.
+**Step 2: Data Structure and Health Checks**
+Used ```info()``` and ```.describe()``` to assess completeness and distributions.
 
-Confirmed all key fields (like dept_no, adjusted_appropriation, strategic_goal) are usable.
+Confirmed all key fields (like ```dept_no, adjusted_appropriation, strategic_goal```) are usable.
 
 Found most columns to be consistent and free of missing data.
 
