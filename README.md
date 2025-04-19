@@ -200,7 +200,7 @@ Explore:
 - Understanding how strategic goals align with priority-based budgeting
 - Understanding the breakdown of what is included in all of the budgeted costs for a program. 
 
-[Launch App (Streamlit Cloud)](https://mtbudgetdirectorapp25.streamlit.app/)
+[Launch App (Streamlit Cloud)](https://mtexpendituretraining2025.streamlit.app/)
 
 *View the Full Code:* Budget_Director_App.py
 
