@@ -1,15 +1,16 @@
-# Final Streamlit App: 'You Be the Budget Director'
-
+## Environment and Libraries
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from PIL import Image
 
-# Page setup
+# ------------------------
+# Page Setup + Styling
+# ------------------------
+
 st.set_page_config(page_title="You Be the Budget Director", layout="wide")
 
-# --- University of Montana Brand Colors ---
 COLORS = {
     "griz_maroon": "#70002e",
     "sunset_red": "#F9423A",
@@ -21,7 +22,8 @@ COLORS = {
     "snowbowl_silver": "#BBDDE6"
 }
 
-# --- CSS Styling ---
+# Inject custom CSS styles
+
 st.markdown(f"""
     <style>
         .sidebar .sidebar-content {{ background-color: {COLORS['wheat']}; }}
@@ -37,7 +39,10 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# --- Session State Init ---
+# ------------------------
+# Initialize Session State
+# ------------------------
+
 if 'housing' not in st.session_state:
     st.session_state.update({
         'housing': 20, 'climate': 20, 'equity': 20, 'safety': 20, 'submitted': False
@@ -46,17 +51,11 @@ if 'housing' not in st.session_state:
 if 'current_page' not in st.session_state:
     st.session_state['current_page'] = 0
 
-pages = [
-    "🏛️ Welcome", "📊 Explore the Landscape", "🎯 Strategy in Action",
-    "🎛️ Make Your Moves", "📈 See the Impact", "🧼 Data Cleaning Deep Dive",
-    "🔍 Analysis and Insights", "📚 Learn More"
-]
+# ------------------------
+# Load Data Once (cached)
+# ------------------------
 
-page = st.sidebar.radio("Navigate", pages, index=st.session_state['current_page'])
-
-# --- Load Cleaned Data ---
 @st.cache_data
-
 def load_data():
     exp = pd.read_csv("cleaned_outputs/cleaned_expenditure_status.csv")
     prog = pd.read_csv("cleaned_outputs/cleaned_program_inventory.csv")
@@ -65,74 +64,70 @@ def load_data():
 
 exp_data, prog_data = load_data()
 
-# --- Next Button Functionality ---
-def next_button():
-    idx = pages.index(page)
-    if idx < len(pages) - 1:
-        if st.button("➡️ Next Page"):
-            st.session_state['current_page'] = idx + 1
-            st.experimental_rerun()
+# ------------------------
+# Navigation + Pages
+# ------------------------
+pages = [
+    "Welcome", "Landscape", "Strategy in Action",
+    "Moves", "Impact", "Data Cleaning Deep Dive",
+    "Insights", "Learn More"
+]
 
-# --- Page Logic (content added in following updates) ---
-if page == "🏛️ Welcome":
+# Create page functions
+def page_welcome():
     st.image("assets/welcome_missoula.jpg", use_column_width=True)
     st.markdown(f"""<div class="title-text">
         <h1 style="text-shadow: 1px 1px 2px {COLORS['snowbowl_silver']};">You Be the Budget Director</h1>
         <h3>Welcome to an interactive budget simulator rooted in transparency, data, and strategy.</h3>
-        <p>This tool empowers users to experience the complex trade-offs of public budgeting through real program data from the City of Missoula. It's part of a comprehensive MSBA Capstone suite, including:</p>
+        <p>This tool empowers users to experience the complex trade-offs of public budgeting through real program data from the City of Missoula.</p>
         <ul>
             <li>A formal written product (linked)</li>
             <li>A live presentation and defense</li>
             <li>This digital product</li>
             <li>A future interactive Power BI dashboard</li>
         </ul>
-        <p>Navigate using the sidebar or the "Next Page" button below to explore how funding priorities affect services, strategy, and equity across Missoula's city programs.</p>
+        <p>Navigate using the sidebar or the "Next Page" button below.</p>
     </div>""", unsafe_allow_html=True)
     next_button()
-elif page == "📊 Explore the Landscape":
-    st.header("Understanding Missoula's Program Landscape")
-    st.markdown("Below are key views into the structure of city services including risk, mandates, and department responsibilities.")
 
+def page_landscape():
+    st.header("Understanding Missoula's Program Landscape")
     col1, col2 = st.columns(2)
     with col1:
         st.subheader("Mandated vs Non-Mandated")
         sns.countplot(data=prog_data, x="mandate_e41_yn", palette=[COLORS['glacier_sky'], COLORS['copper_climb']])
         st.pyplot(plt.gcf()); plt.clf()
-
     with col2:
         st.subheader("Risk Levels")
         sns.countplot(data=prog_data, y="risk_e93_type", palette="rocket")
         st.pyplot(plt.gcf()); plt.clf()
-
     st.subheader("Top Departments by Program Count")
     dept_counts = prog_data['department_h6'].value_counts().nlargest(10)
     dept_counts[::-1].plot(kind='barh', color=sns.color_palette("viridis", 10))
     st.pyplot(plt.gcf()); plt.clf()
-
     next_button()
-elif page == "🎯 Strategy in Action":
+
+def page_strategy():
     st.header("How Programs Align With Strategic Goals")
     top_programs = prog_data.sort_values(by="personnel_g27", ascending=False).head(10)
-    st.subheader("Top 10 Programs by Personnel Spending")
     st.dataframe(top_programs[["program_title_h8", "personnel_g27", "ftes_h36", "strategic_goal_e66_name"]])
-
-    st.subheader("High-Risk, High-Budget Programs")
     high_risk = prog_data[(prog_data['risk_e93_type'] != 'Low/No Risk') & (prog_data['total_expenditures_g33'] > 1_000_000)]
+    st.subheader("High-Risk, High-Budget Programs")
     st.dataframe(high_risk.head(10))
-
     st.subheader("FTE vs Personnel Cost")
     fig, ax = plt.subplots()
     sns.scatterplot(data=prog_data, x="ftes_h36", y="personnel_g27", hue="risk_e93_type", ax=ax)
     st.pyplot(fig)
     next_button()
-elif page == "🎛️ Make Your Moves":
+
+def page_moves():
     st.header("Allocate Your Budget")
     st.markdown("Adjust the sliders to reflect your funding priorities across four key strategy pillars.")
 
-    st.slider("🏘️ Housing & Affordability", 0, 100, key='housing')
-    st.slider("🌱 Climate & Sustainability", 0, 100, key='climate')
-    st.slider("🟡 Equity & Inclusion", 0, 100, key='equity')
-    st.slider("🚓 Public Safety & Services", 0, 100, key='safety')
+    st.slider("Housing & Affordability", 0, 100, key='housing')
+    st.slider("Climate & Sustainability", 0, 100, key='climate')
+    st.slider("Equity & Inclusion", 0, 100, key='equity')
+    st.slider("Public Safety & Services", 0, 100, key='safety')
 
     total = st.session_state['housing'] + st.session_state['climate'] + st.session_state['equity'] + st.session_state['safety']
     st.metric("Total Allocated", f"{total}%")
@@ -148,7 +143,8 @@ elif page == "🎛️ Make Your Moves":
             st.success("Allocation reset.")
 
     next_button()
-elif page == "📈 See the Impact":
+
+def page_impact():
     st.image("assets/missoula_city_snow.JPG", use_column_width=True)
     st.header("Your Budget Impact")
 
@@ -173,7 +169,8 @@ elif page == "📈 See the Impact":
         st.info("Please submit your allocation in the previous section to see your impact.")
 
     next_button()
-elif page == "🧼 Data Cleaning Deep Dive":
+
+def page_cleaning():
     st.header("The Data Journey: Cleaning and Transformation")
     st.markdown("This section walks through how raw, inconsistent municipal data was transformed into clean, analysis-ready structure.")
 
@@ -203,7 +200,8 @@ elif page == "🧼 Data Cleaning Deep Dive":
         st.dataframe(cleaned_df)
 
     next_button()
-elif page == "🔍 Analysis and Insights":
+
+def page_insights():
     st.header("What We Learned")
     st.markdown("""
     After evaluating program-level risks, mandates, and spending, key trends emerged:
@@ -215,17 +213,16 @@ elif page == "🔍 Analysis and Insights":
     st.subheader("Total Expenditures by Department")
     dept_spend = exp_data.groupby("department")["adjusted_appropriation"].sum().sort_values(ascending=True).tail(10)
     dept_spend.plot(kind='barh', color=COLORS['griz_maroon'])
-    st.pyplot(plt.gcf())
-    plt.clf()
+    st.pyplot(plt.gcf()); plt.clf()
 
     st.subheader("Trends by Strategic Goal")
     goal_counts = prog_data['strategic_goal_e66_name'].value_counts().nlargest(10)
     sns.barplot(x=goal_counts.values, y=goal_counts.index, palette="crest")
-    st.pyplot(plt.gcf())
-    plt.clf()
+    st.pyplot(plt.gcf()); plt.clf()
 
     next_button()
-elif page == "📚 Learn More":
+
+def page_learn_more():
     st.image("assets/downtown_river.jpg", use_column_width=True)
     st.header("About This Project")
     st.markdown("""
@@ -250,3 +247,23 @@ elif page == "📚 Learn More":
     """, unsafe_allow_html=True)
 
     next_button()
+
+# Dictionary of all page functions
+page_functions = {
+    "Welcome": page_welcome,
+    "Landscape": page_landscape,
+    "Strategy": page_strategy,
+    "Moves": page_moves,
+    "Impact": page_impact,
+    "Data Cleaning Deep Dive": page_cleaning,
+    "Insights": page_insights,
+    "Learn More": page_learn_more,
+}
+
+## Top Dropdown navigation for greater accessibility and mobile friendly execution
+st.markdown("## Navigation")
+selected_page = st.selectbox("Choose a page", pages, index=st.session_state['current_page'])
+st.session_state['current_page'] = pages.index(selected_page)
+
+# Run the selected page
+page_functions[selected_page]()
