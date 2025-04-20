@@ -38,7 +38,7 @@ page_names = list(pages.keys())
 # ----------------------------
 # Header Image (small banner)
 # ----------------------------
-st.image("../assets/welcome_missoula.jpg", use_container_width=True)
+st.image("assets/welcome_missoula.jpg", use_container_width=True)
 
 # ----------------------------
 # Horizontal Navigation Bar
