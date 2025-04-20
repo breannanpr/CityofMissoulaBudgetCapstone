@@ -13,7 +13,7 @@ from style import apply_custom_styles
 # ----------------------------
 # App Config & Styling Setup
 # ----------------------------
-st.set_page_config(page_title="You Be the Budget Director", layout="wide")
+st.set_page_config(page_title="City of Missoula Expenditure Status Training Tool", layout="wide")
 apply_custom_styles()  # Inject custom CSS and colors
 
 # ----------------------------

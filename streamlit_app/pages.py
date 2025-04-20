@@ -5,10 +5,6 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-from data import load_data
-
-# Load data once and use across pages
-exp_data, prog_data = load_data()
 
 # ------------------
 # Welcome Page
