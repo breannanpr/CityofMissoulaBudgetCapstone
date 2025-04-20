@@ -1,7 +1,7 @@
-# digital_product_internal_tool.py
 # This is the main digital product internal tool Streamlit app entry point that controls page layout, navigation, and routing
 
 import streamlit as st
+import os
 from pages import (
     page_welcome,
     page_background,
@@ -39,7 +39,8 @@ page_names = list(pages.keys())
 # ----------------------------
 # Header Image (small banner)
 # ----------------------------
-st.image("assets/welcome_missoula.jpg", use_container_width=True)
+header_img_path = os.path.join("streamlit_app", "assets", "welcome_missoula.jpg")
+st.image(header_img_path, use_container_width=True)
 
 # ----------------------------
 # Horizontal Navigation Bar
