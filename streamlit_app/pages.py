@@ -1,4 +1,3 @@
-# pages.py
 # Contains all the content and logic for each page of the Streamlit app
 
 import streamlit as st

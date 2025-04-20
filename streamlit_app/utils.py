@@ -1,4 +1,3 @@
-# utils.py
 # Contains optional reusable helper functions for the app
 
 import streamlit as st
