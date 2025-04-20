@@ -14,16 +14,35 @@ The repository is organized as follows:
 ```
 CityofMissoulaBudgetCapstone/
 │
-├── assets/                        # Images and app visuals
-│   ├── welcome_missoula.jpg 
-│   ├── missoula_city_snow.JPG 
-│   ├── downtown_river.jpg 
-│   └── analyst.jpg 
+├── assets/                        # Images and visuals
+│   ├── clean_program_inventory_column_names.png
+│   ├── cleaned_expend_preview.png
+│   ├── cleaned_program_inventory.png
+│   ├── dashboard_view_01.png
+│   ├── dashboard_view_02.png
+│   ├── expend_preview_preclean.png
+│   ├── program_inventory_internal_data_collection.pdf
+│   ├── program_inventory_preview_preclean.png
+│   ├── sharepoint_library_view.png
+│   └── three_ps_niekamp.txt        # project weekly updates log
 │
 ├── cleaned_outputs/              # Finalized data used by the app + dashboard
 │   ├── cleaned_expenditure_status.csv
 │   └── cleaned_program_inventory.csv
 │
+├── streamlit_app               # Digital product; internal training tool for city
+│   ├── assets/
+│   |    ├── analyst.jpg
+│   |    ├── downtown_river.jpg
+│   |    ├── downtown_scenic.jpg
+│   |    ├── missoula_city_snow.JPG
+│   |    └── welcome_missoula.jpg
+│   ├── digital_product_internal_tool.py
+│   ├── pages.py
+│   ├── requirements.txt
+│   ├── style.py
+│   └── utils.py
+|
 ├── code/                         # Jupyter notebooks and scripts
 │   ├── citydata_01_cleaning.ipynb
 │   └── citydata_02_exploratory.ipynb
@@ -83,11 +102,11 @@ All cleaning is conducted in Python using modular, documented functions that sup
 **Step 1:** Import Libraries Used
 
 ```
-**pandas, numpy** ## Data wrangling
-**openpyxl** ## Excel file I/O
-**janitor** ## Header normalization and chaining helpers
-**tqdm, re, os, chardet** ## Cleaning utilities
-**missingno, matplotlib.pyplot** ## EDA visual tools
+pandas, numpy               ## Data wrangling
+openpyxl                    ## Excel file I/O
+janitor                     ## Header normalization and chaining helpers
+tqdm, re, os, chardet       ## Cleaning utilities
+missingno, matplotlib.pyplot ## EDA visual tools
 ```
 
 **Step 2:** Define Cleaning Functions
@@ -139,7 +158,6 @@ activity_code,  ## related to six digit unique activity codes
 object_code,    ## related to three digit budget object code
 
 sub_object_code     ## related to three digit sub budget object code
-
 ```
 
 
@@ -172,7 +190,6 @@ Applies across both program and revenue workbooks
 missingno.matrix()           ## confirms data completeness
 
 .describe() and .info()      ## checks used on each dataset
-
 ```
 
 Spot checks confirm no corrupted rows or null-heavy fields
@@ -188,21 +205,22 @@ Unmapped entries are labeled "unmapped" for visibility
 **Step 11:** Export Cleaned Files
 
 Final files are saved to cleaned_outputs/ for use in:
-- Streamlit Hosted Internal Training Tool
+- Streamlit Hosted Internal Expenditure Status Training Tool
 - Power BI Dashboard
 
 
 ## Streamlit Digital Product: Internal Training Tool
-The Streamlit app allows the user to experience what it is like to be included in the budget planning process in the City of Missoula. Whether you are planning to run for city council, mayor or support the city by joining the finance department - This tool educates understanding of budget tradeoffs by allocating funds across Housing, Climate, Equity, and Safety using priority-based budgeting practices.
+The Streamlit app allows the user to experience what it is like to be included in the budget planning process in the City of Missoula. Whether you are planning to run for city council, mayor or support the city by joining the finance department - This tool educates understanding of budget tradeoffs by allocating funds across the four strategic goals; Community Design and Livability, Community Saftety Health and Well-Being, Organizational Excellence and Resilience, and Economic Health using priority-based budgeting practices.
 
 Explore:
 - Understanding how program risks, requirements and mandates reduce available budget
 - Understanding how strategic goals align with priority-based budgeting
 - Understanding the breakdown of what is included in all of the budgeted costs for a program. 
 
-[Launch App (Streamlit Cloud)](https://mtexpendituretraining2025.streamlit.app/)
+[Launch App (Streamlit Cloud)](https://expendituretrainingmt2025.streamlit.app/)
 
-*View the Full Code:* Budget_Director_App.py
+*View the Full Code:* [streamlit_app](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/tree/main/streamlit_app)
+
 
 ## Power BI Integration
 **[Currently in progress, will be adding more information to this section. Currently the process is as below]**
@@ -236,6 +254,7 @@ Once this process is complete, the dashboard should update to reflect the new da
 
 Users only need to upload raw files. The cleaning script takes care of the rest - cleaning, mapping, and shaping all the data in real-time. 
 
+
 ### Dashboard Features
 
 ***[Currently in progress, this is how the process will be laid out in the future]***
@@ -251,6 +270,7 @@ Power BI will support:
 
 ![Placeholder for Dashboard Embedded View #2](assets/dashboard_view_02.png)
 
+
 ## Exploratory Analysis
 The notebook [citydata_02_exploratory.ipynb](code/citydata_02_exploratory.ipynb) dives into the cleaned data to identify patterns, ensure data integrity, and inform both the app and dashboard. This step is essential for validating the success of the cleaning process and surfacing analytical insights before building visualizations.
 
@@ -260,7 +280,9 @@ Both cleaned CSVs are loaded from our ```cleaned_outputs``` file:
 - cleaned_program_inventory.csv
 
 ✅ Column names and data types are verified
+
 ✅ Expected shapes: ~2,200 expenditure rows, ~375 program rows
+
 ✅ Structure aligns with expectations, no null or corrupted columns
 
 **Step 2: Data Structure and Health Checks**
@@ -271,67 +293,61 @@ Confirmed all key fields (like ```dept_no, adjusted_appropriation, strategic_goa
 Found most columns to be consistent and free of missing data.
 
 Visual null-check:
-
-python
-Copy
-Edit
+```
 import missingno as msno
 msno.matrix(df_programs)
+```
+
 This quickly confirms that most columns are complete and suitable for grouping and visualization.
 
-🧾 Step 3: Expenditure Trends
-Aggregated adjusted_appropriation by department to highlight high-spend orgs.
+**Step 3: Expenditure Trends**
+Aggregated ```adjusted_appropriation``` by ```department``` to highlight high-spend orgs.
 
 Identified which departments are driving the city’s core spending.
-
-python
-Copy
-Edit
+```
 top_depts = df_expend.groupby('department')['adjusted_appropriation'].sum().sort_values(ascending=False)
 top_depts.plot(kind='barh')
+```
+
 🟢 Findings: Several departments (e.g. Fire, Police, Public Works) dominate the budget allocation.
 
-📚 Step 4: Strategic Program Review
+**Step 4: Strategic Program Review**
 Explored how many programs aligned with citywide strategic goals
 
-Grouped by strategic_goal_e66_name and risk_e93_type to understand complexity
+Grouped by ```strategic_goal_e66_name``` and ```risk_e93_type``` to understand complexity
 
 Example:
-
-python
-Copy
-Edit
+```
 df_programs['strategic_goal_e66_name'].value_counts().head(10)
+```
+
 🟡 Insight: Programs tied to housing and infrastructure were most common among strategic alignments.
 
-🛡️ Step 5: Risk and Mandate Profiles
+**Step 5: Risk and Mandate Profiles**
 Evaluated how many programs were mandated and how many were high-risk.
 
 Compared cost/reliance of mandated vs. non-mandated programs.
-
-python
-Copy
-Edit
+```
 sns.countplot(data=df_programs, x='mandate_e41_yn')
 sns.countplot(data=df_programs, y='risk_e93_type')
+```
+
 🔴 Risk Areas Identified:
+- Public health and grant-based programs showed higher exposure.
+- High personnel costs often correlated with risk-heavy programs.
 
-Public health and grant-based programs showed higher exposure.
-
-High personnel costs often correlated with risk-heavy programs.
-
-🧮 Step 6: Program Cost Patterns
-Analyzed personnel_g27 vs ftes_h36 to find high-cost, low-staff programs.
+**Step 6: Program Cost Patterns**
+Analyzed ```personnel_g27``` vs ```ftes_h36``` to find high-cost, low-staff programs.
 
 Flagged outliers that might require further budgetary scrutiny.
 
-python
-Copy
-Edit
+```
 sns.scatterplot(data=df_programs, x='ftes_h36', y='personnel_g27', hue='risk_e93_type')
+```
+
 💡 Pattern: Some strategic programs consume large personnel budgets without high FTE counts — signals for further review.
 
-✅ Summary of Insights
+**Summary of Insights**
 The cleaning pipeline was validated: no structural errors or major nulls.
 
 Expenditure is concentrated among a few departments and object types.
@@ -356,51 +372,57 @@ Pillow
 
 
 ## Feedback Welcome!
-If you'd like to adapt this work to your city or department, feel free to fork the repo or reach out. This work is open for public use under civic good licensing. 
+If you'd like to adapt this work to your city or department, feel free to fork the repo or reach out. 
+***This work is open for public use under civic good licensing. ***
 
 
 ## Appendicies 
 
-### Appendix 1A: City Program Inventory Internal Data Collection Data Columns
+### Appendix 1A: Cleaned City Program Inventory Internal Data Collection Data Columns
 
-1. Fund: Identifies the financial fund supporting the program.
-2. Org: Department responsible for the program’s delivery or oversight. 
-3. Activity: Code linked to a specific function or financial activity in the City's system.
-4. Program Title (H8): The name of the city-funded service or function.
-5. Requested Title Change (I9): Suggested updates to program titles, submitted by departments.
-6. Department (H6): Label for the department managing the program.
-7. FTEs (H36): Full-Time Equivalent employees assigned to the program.
-8. Personnel (G27): Budget for salaries, benefits, and direct staff compensation.
-9. O&M (G28): Operational costs and maintenance-related expenses.
-10. Debt (G29): Costs related to debt service obligations.
-11. Grant (G30): Costs related to Grant paid to other organizations.
-12. Transfers (G31): Transfers between funds or departments.
-13. Captial (G32): Capital expenditures for infrastructure or equipment.
-14. Total Expenditures (G33): Sum of all budgeted costs for the program.
-15. Cost Recovery (E58, P24): Portion of program costs offset by revenue sources.
-16. Description (E12): Written explanation of the program’s purpose and activities.
-17. Additional Activities (E20): Notes extra roles, services, or responsibilities.
-18. Mandate (E41, H41, E43): Indicates legal requirement, authority, and rationale.
-19. Service Level (E47, H47, E49): Describes level of service offered and justification.
-20. Reliance & Interdependencies (E53, E55): Captures both community dependence and internal links to other programs.
-21. Strategic Goal (E64, E66, E68, E74, E80): Tags which City strategic goals the program supports.
-22. Trend (Demand) (E87, E89): Describes changes in demand or usage over time.
-23. Risk (E93, E95): Identifies short-term risks and supporting notes.
+1. fund: Identifies the financial fund supporting the program.
+2. dept_no: formerly "Org" in the pre-cleaned data, Department responsible for the program’s delivery or oversight. 
+3. activity: Code linked to a specific function or financial activity in the City's system.
+4. program_title_h8: The name of the city-funded service or function, representing a specific output or public-facing activity.
+5. requested_title_change_i9: Suggested updates to program titles, submitted by departments.
+6. department_h6: Label for the department managing the program.
+7. ftes_h36: Full-Time Equivalent employees assigned to the program.
+8. personnel_g27: Budget for salaries, benefits, and direct staff compensation.
+9. o&m_g28: Operational costs and maintenance-related expenses.
+10. debt_g29: Costs related to debt service obligations.
+11. grant_g30: Costs related to Grant paid to other organizations.
+12. transfers_g31: Transfers between funds or departments.
+13. capital_g32: Capital expenditures for infrastructure or equipment.
+14. total_expenditures_g33: Sum of all budgeted costs for the program.
+15. cost_recovery_e58_yn: Portion of program costs offset by revenue sources.
+16. cost_recovery_p24_percent:
+17. description_e12: Written explanation of the program’s purpose and activities, why it exists and how it benefits the community.
+18. additional_activities_e20: Notes extra roles, services, or responsibilities.
+19. mandate_e41_yn: Indicates legal requirement (federal, state or court-appointed), authority, and rationale. Does not include contract-based or optional services. 
+20. mandate_h41_entity:
+21: mandate_e43_descript:
+22. service_requirement_e47_yn: Describes service requirements or rules imposed by external entities (regulatory agencies), even if program is not mandated and provies justification.
+23. service_requirement_h47_entity:
+24. service_requirement_e49_descript:
+25. reliance_e53_level: Captures both community dependence and risk of disruption if removed from the community. High reliance = wide usage, few alternatives, or critical outcomes.
+26. reliance_e55_high_descript:
+27. strategic_goal_e64_yn: Tags which City strategic goals the program supports.
+28. strategic_goal_e66_name:
+29. strategic_goal_e68_action_descript:
+30. strategic_goal_e74_additional_activities:
+31. strategic_goal_e80_2nd_additional_activities:
+32. trend_demand_e87_level: Describes changes in demand or usage over time, indicates whether a programs demand is growing, stable, declining or evolving due to external factors.
+33. trend_demand_e89_descript:
+34. risk_e93_type: Identifies short-term risks and supporting notes; assesses potential challenges in the next 1-3 years (ex., funding cuts, staffing issues, legal changes).
+35. risk_e95_descript:
 
+### Appendix 1B: Cleaned Expenditure Status Data Columns 
 
-**Program**: City-funded service or function with a 6-digit code, representing a specific output or public-facing activity. 
-
-**Program Description**: Short summary explaining what the program does, why it exists and how it benefits the community. 
-
-**Mandate**: Legally required (federal, state or court-appointed). Does not include contract-based or optional services. 
-
-**Service Requirements (External)**: Rules imposed by external entities (ex., regulatory agencies), even if the program itself isn't mandated.
-
-**Reliance**: Community dependence or risk of disruption if removed from the community. High reliance = wide usage, few alternatives, or critical outcomes. 
-
-**Trend**: Indicates whether the program's demand is growing, stable, declining or evolving due to external factors. 
-
-**Risk**: Assesses potential challenges in the next 1-3 years (ex., funding cuts, staffing issues, legal changes).
-
-**Internal Use**: Data used internally for planning and analysis, but not necessarily shared publicly. 
-### Appendix 1B: Expenditure Status Data Columns 
+1. adjusted_appropriation: 
+2. fund_no: 
+3. dept_no: 
+4. activity_code: 
+5. object_code: 
+6. sub_object_code: 
+7. account_description: 
+8. department: 

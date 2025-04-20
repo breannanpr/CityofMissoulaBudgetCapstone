@@ -45,7 +45,7 @@ st.image(header_img_path, use_container_width=True)
 # ----------------------------
 # Horizontal Navigation Bar
 # ----------------------------
-st.markdown("## Navigate")
+st.markdown("## Welcome")
 nav_cols = st.columns(len(page_names))
 for i, name in enumerate(page_names):
     if nav_cols[i].button(name):
