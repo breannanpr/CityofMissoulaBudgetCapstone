@@ -14,7 +14,6 @@ def page_welcome(pages_list):
     st.title("Expenditure Status Training Tool")
     st.markdown("""
     Welcome to an interactive training tool designed for the City of Missoula, to help you understand expenditures within the city and how priority based budgeting practices work within the City of Missoula. It is especially important to note the following:
-
     - This tool only provides information available based on the expenditure budet information
     - This tool does not provide a comprehensive view of the budget for Missoula, MT. 
     - This training focuses solely on providing context for the expenditure information. 
@@ -29,7 +28,7 @@ def page_welcome(pages_list):
 def page_background(pages_list):
     st.header("Background and About This Tool")
     st.markdown("""
-    This internal training tool is built around real data from the City of Missoula's budget process.
+    This internal training tool is built around real data from the City of Missoula's budget process. 
 
     It aims to:
     - Build familiarity with program-level budgeting
@@ -136,7 +135,7 @@ def page_learn_more(pages_list):
     - City of Missoula Program Inventory
     - Departmental Expenditure Status
 
-    #### 👩‍💻 About the Data Engineering Analst:
+    #### 👩‍💻 About the Data Engineering Analyst:
     **Breanna Niekamp** is a data engineer/analyst based in the local area of Missoula, Montana, 
     who blends storytelling, strategy and design thinking to help increase transparancy communication
     surrounding priority-based informed budget decisions. 
