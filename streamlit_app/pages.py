@@ -1,14 +1,16 @@
 # Contains all the content and logic for each page of the Streamlit app
 
 import streamlit as st
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
+# from data import load_data  # Temporarily commented out until deployment paths are finalized
+# import matplotlib.pyplot as plt
+# import seaborn as sns
+# import pandas as pd
+from utils import next_button
 
 # ------------------
 # Welcome Page
 # ------------------
-def page_welcome():
+def page_welcome(pages_list):
     st.title("Welcome to the City of Missoula's Expidenture Training Tool")
     st.markdown("""
     Welcome to an interactive training tool designed for the City of Missoula, to help you understand expenditures within the city and how priority based budgeting
@@ -19,11 +21,12 @@ def page_welcome():
     
     Use the navigation above to explore background context, interact with real program data, and try your hand at making funding decisions!
     """)
+    next_button(pages_list)
 
 # ------------------
 # Background Page
 # ------------------
-def page_background():
+def page_background(pages_list):
     st.header("Background and About This Tool")
     st.markdown("""
     This internal training tool is built around real data from the City of Missoula's budget process.
@@ -35,11 +38,12 @@ def page_background():
 
     You’ll find visualizations, a hands-on activity, and a linked dashboard to support learning and most recently updated fiscal year data.
     """)
+    next_button(pages_list)
 
 # ------------------
 # Dashboard Page
 # ------------------
-def page_dashboard():
+def page_dashboard(pages_list):
     st.header("Explore the Budget Dashboard")
     st.markdown("""
     Below is an interactive dashboard (Power BI) that displays program expenditures, risks, mandates, and alignment with city strategies.
@@ -49,11 +53,12 @@ def page_dashboard():
 
     # Embed Power BI dashboard (replace src with actual embed link when ready)
     # st.components.v1.iframe("https://app.powerbi.com/view?r=YOUR_EMBED_LINK", height=600, scrolling=True)
+    next_button(pages_list)
 
 # ------------------
 # Training Tool Page
 # ------------------
-def page_training_tool():
+def page_training_tool(pages_list):
     st.header("Make Your Budget Decisions")
     st.markdown("""
     Allocate funding across key strategy areas. After submitting, you'll immediately see how your choices align with City of Missoula priorities.
@@ -75,20 +80,7 @@ def page_training_tool():
     total = sum(st.session_state.get(key, 0) for key in categories.values())
     st.metric("Total Allocated", f"{total}%")
 
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Submit Allocation"):
-            st.session_state['submitted'] = True
-            st.rerun()
-
-    with col2:
-        if st.button("Reset Allocation"):
-            for key in categories.values():
-                st.session_state[key] = 0
-            st.session_state['submitted'] = False
-            st.success("Allocation reset.")
-
-    if st.session_state.get('submitted', False):
+    if any(st.session_state.get(k, 0) > 0 for k in categories.values()):
         st.success("Here’s how your budget reflects your values:")
         impact = []
 
@@ -124,11 +116,13 @@ def page_training_tool():
 
         for line in impact:
             st.markdown(f"- {line}")
+    next_button(pages_list)
+
 
 # ------------------
 # Learn More Page
 # ------------------
-def page_learn_more():
+def page_learn_more(pages_list):
     st.header("Learn More About This Project")
     st.markdown("""
     This interactive simulator was developed as part of the final Master of Science, Business Analytics (MSBA) Capstone project at the University of Montana.
@@ -150,3 +144,4 @@ def page_learn_more():
     #### 📂 GitHub Repository:
     [View the codebase](https://github.com/breannanpr/CityofMissoulaBudgetCapstone)
     """, unsafe_allow_html=True)
+

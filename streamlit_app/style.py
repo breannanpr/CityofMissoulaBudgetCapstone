@@ -1,51 +1,64 @@
-# style.py
-# Contains custom colors and CSS for consistent branding across the Streamlit app
+# Defines and applies custom CSS styles for the Streamlit app
 
-import streamlit as st
-
-# ------------------------
-# University of Montana Brand Colors
-# ------------------------
-COLORS = {
-    "griz_maroon": "#70002e",
-    "sunset_red": "#F9423A",
-    "copper_climb": "#ED8B00",
-    "wheat": "#EFE8D4",
-    "trail_sign_tan": "#DFD1A7",
-    "lubrecht_green": "#1D3C34",
-    "glacier_sky": "#BBDDE6",
-    "snowbowl_silver": "#BBDDE6"
-}
-
-# ------------------------
-# Custom CSS Injection Function
-# ------------------------
 def apply_custom_styles():
-    """
-    Injects custom CSS to style elements consistently across the app.
-    Should be called once at the top of main.py.
-    """
-    st.markdown(f"""
+    import streamlit as st
+
+    # Inject custom CSS styles into the Streamlit app
+    st.markdown("""
         <style>
-            .block-container {{ padding-top: 2rem; }}
-            .stSlider > div {{ color: {COLORS['griz_maroon']}; }}
-            .stButton > button {{ 
-                border-radius: 8px; 
-                background-color: {COLORS['lubrecht_green']}; 
-                color: white; 
-                padding: 0.5em 1.5em; 
-            }}
-            .stButton > button:hover {{ background-color: {COLORS['copper_climb']}; }}
-            h1, h2, h3, h4 {{ color: {COLORS['griz_maroon']}; }}
-            .title-text {{ 
-                background-color: rgba(255,255,255,0.92); 
-                padding: 1rem; 
-                border-radius: 10px; 
-                max-width: 850px; 
-                box-shadow: 2px 2px 10px rgba(0,0,0,0.2); 
-            }}
-            ul {{ line-height: 1.5em; }}
-            .impact-check {{ font-size: 1.1em; }}
-            .next-button-container {{ text-align: center; margin-top: 2rem; }}
+            /* Customize slider text color to match brand */
+            .stSlider > div {
+                color: #70002e; /* Griz maroon */
+            }
+
+            /* Primary button styling for consistency across pages */
+            .stButton > button {
+                border-radius: 8px;
+                background-color: #1D3C34; /* Lubrecht green */
+                color: white;
+                padding: 0.5em 1.5em;
+            }
+
+            /* Button hover effect for user interaction feedback */
+            .stButton > button:hover {
+                background-color: #ED8B00; /* Copper climb */
+            }
+
+            /* Ensure consistent branding across all headers */
+            h1, h2, h3, h4 {
+                color: #70002e; /* Griz maroon */
+            }
+
+            /* Styling for the welcome block or highlighted text sections */
+            .title-text {
+                background-color: rgba(255,255,255,0.92);
+                padding: 1rem;
+                border-radius: 10px;
+                max-width: 850px;
+                box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            }
+
+            /* Improve list readability */
+            ul {
+                line-height: 1.5em;
+            }
+
+            /* Adjust font size for impact evaluation feedback */
+            .impact-check {
+                font-size: 1.1em;
+            }
+
+            /* Style and space the optional "Next Page" button */
+            .next-button-container {
+                text-align: center;
+                margin-top: 2rem;
+            }
+
+            /* Header image styling - reduce vertical space usage */
+            .stImage > img {
+                max-height: 150px; /* Control height of top banner */
+                object-fit: cover;  /* Ensure clean aspect ratio */
+                width: 90%; /* Full-width responsiveness */
+            }
         </style>
     """, unsafe_allow_html=True)

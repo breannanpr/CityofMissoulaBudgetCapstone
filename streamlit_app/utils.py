@@ -3,7 +3,7 @@
 import streamlit as st
 
 # ------------------------
-# Navigation Helper (Optional)
+# Navigation Helper
 # ------------------------
 def next_button(pages_list):
     """
@@ -15,6 +15,3 @@ def next_button(pages_list):
         if st.button("➡️ Next Page"):
             st.session_state["current_page"] = idx + 1
             st.rerun()
-
-# You can import this function in main.py or pages.py like so:
-# from utils import next_button

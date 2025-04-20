@@ -1,9 +1,7 @@
+# digital_product_internal_tool.py
 # This is the main digital product internal tool Streamlit app entry point that controls page layout, navigation, and routing
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# import pandas as pd
-import streamlit as st
 
+import streamlit as st
 from pages import (
     page_welcome,
     page_background,
@@ -47,10 +45,13 @@ st.image("assets/welcome_missoula.jpg", use_container_width=True)
 # Horizontal Navigation Bar
 # ----------------------------
 st.markdown("## Navigate")
-selected_page = st.selectbox("Choose a page", page_names, index=st.session_state['current_page'], key="page_selector")
-st.session_state['current_page'] = page_names.index(selected_page)
+nav_cols = st.columns(len(page_names))
+for i, name in enumerate(page_names):
+    if nav_cols[i].button(name):
+        st.session_state['current_page'] = i
+        st.rerun()
 
 # ----------------------------
 # Load the Selected Page Content
 # ----------------------------
-pages[selected_page]()
+pages[page_names[st.session_state['current_page']]](page_names)
