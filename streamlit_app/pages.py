@@ -11,13 +11,13 @@ from utils import next_button
 # Welcome Page
 # ------------------
 def page_welcome(pages_list):
-    st.title("Welcome to the City of Missoula's Expidenture Training Tool")
+    st.title("Expenditure Status Training Tool")
     st.markdown("""
-    Welcome to an interactive training tool designed for the City of Missoula, to help you understand expenditures within the city and how priority based budgeting
-    practices work within the City of Missoula. It is especially important to note the following: 
-        - This tool only provides information available based on the expenditure budet information
-        - This tool does not provide a comprehensive view of the budget for Missoula, MT. 
-        - This training focuses solely on providing context for the expenditure information. 
+    Welcome to an interactive training tool designed for the City of Missoula, to help you understand expenditures within the city and how priority based budgeting practices work within the City of Missoula. It is especially important to note the following:
+
+    - This tool only provides information available based on the expenditure budet information
+    - This tool does not provide a comprehensive view of the budget for Missoula, MT. 
+    - This training focuses solely on providing context for the expenditure information. 
     
     Use the navigation above to explore background context, interact with real program data, and try your hand at making funding decisions!
     """)
