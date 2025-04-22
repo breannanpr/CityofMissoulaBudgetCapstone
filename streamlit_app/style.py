@@ -21,7 +21,8 @@ def apply_custom_styles():
 
             /* Button hover effect for user interaction feedback */
             .stButton > button:hover {
-                background-color: #B86811; /* Orange */
+                background-color: #375772; /* Light Blue */
+                color: white;
             }
 
             /* Ensure consistent branding across all headers */
