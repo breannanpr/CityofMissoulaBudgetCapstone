@@ -8,25 +8,25 @@ def apply_custom_styles():
         <style>
             /* Customize slider text color to match brand */
             .stSlider > div {
-                color: #70002e; /* Griz maroon */
+                color: #1c2f41; /* Dark Blue */
             }
 
             /* Primary button styling for consistency across pages */
             .stButton > button {
                 border-radius: 8px;
-                background-color: #1D3C34; /* Lubrecht green */
+                background-color: #65651a; /* Green */
                 color: white;
                 padding: 0.5em 1.5em;
             }
 
             /* Button hover effect for user interaction feedback */
             .stButton > button:hover {
-                background-color: #ED8B00; /* Copper climb */
+                background-color: #B86811; /* Orange */
             }
 
             /* Ensure consistent branding across all headers */
             h1, h2, h3, h4 {
-                color: #70002e; /* Griz maroon */
+                color:  #1c2f41; /* Dark Blue */
             }
 
             /* Styling for the welcome block or highlighted text sections */

@@ -221,6 +221,8 @@ Explore:
 
 *View the Full Code:* [streamlit_app](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/tree/main/streamlit_app)
 
+[Leave a comment about your experience with the training tool:](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header)
+
 
 ## Power BI Integration
 **[Currently in progress, will be adding more information to this section. Currently the process is as below]**
@@ -395,7 +397,7 @@ If you'd like to adapt this work to your city or department, feel free to fork t
 13. capital_g32: Capital expenditures for infrastructure or equipment.
 14. total_expenditures_g33: Sum of all budgeted costs for the program.
 15. cost_recovery_e58_yn: Portion of program costs offset by revenue sources.
-16. cost_recovery_p24_percent:
+16. cost_recovery_p24_percent: 
 17. description_e12: Written explanation of the program’s purpose and activities, why it exists and how it benefits the community.
 18. additional_activities_e20: Notes extra roles, services, or responsibilities.
 19. mandate_e41_yn: Indicates legal requirement (federal, state or court-appointed), authority, and rationale. Does not include contract-based or optional services. 

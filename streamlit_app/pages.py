@@ -11,13 +11,17 @@ from utils import next_button
 # Welcome Page
 # ------------------
 def page_welcome(pages_list):
-    st.title("Expenditure Status Training Tool")
+    st.title("City of Missoula - Expenditure Budget Training Tool")
     st.markdown("""
-    Welcome to an interactive training tool designed for the City of Missoula, to help you understand expenditures within the city and how priority based budgeting practices work within the City of Missoula. It is especially important to note the following:
-    - This tool only provides information available based on the expenditure budet information
-    - This tool does not provide a comprehensive view of the budget for Missoula, MT. 
-    - This training focuses solely on providing context for the expenditure information. 
+    Welcome to the City of Missoula's interactive training tool. This resource was created to help users understand how budgeted expenditures align with the City's strategic pillars and to provide insight into priority-based budgeting in practice. 
+    A few important notes before you being: 
+    - This tool presents budgeted expenditures only, not actual spending. 
+    - Transfers have been excluded to avoid double counting, and revenues are not shown. 
+    - The data reflects a single fiscal year at a time. 
+    - The information is drawn from program inventory sheets completed by budget managers for every budgeted expenditure across the City.  
     
+    While this is not a comprehensive view of the full City budget, it offers valuable context about how resources are allocated to support strategic priorities. 
+                
     Use the navigation above to explore background context, interact with real program data, and try your hand at making funding decisions!
     """)
     next_button(pages_list)
@@ -26,16 +30,16 @@ def page_welcome(pages_list):
 # Background Page
 # ------------------
 def page_background(pages_list):
-    st.header("Background and About This Tool")
+    st.header("Background & Purpose of This Tool")
     st.markdown("""
-    This internal training tool is built around real data from the City of Missoula's budget process. 
+    This internal training tool is built using real data from the City of Missoula's budget process. It's designed to help staff better understand how the City's values are reflected in budget decisions.
 
-    It aims to:
-    - Build familiarity with program-level budgeting
-    - Show how values are reflected in financial choices
-    - Practice navigating public data and making trade-off decisions
+    This tool will help you:
+    - Build familiarity with **program-level budgeting**
+    - Show how **strategic priorities influence financial choices**
+    - Practice **navigating public data** and consider **budget trade-offs**
 
-    You’ll find visualizations, a hands-on activity, and a linked dashboard to support learning and most recently updated fiscal year data.
+    This tool includes visualizations, a hands-on activity, and a lined dashboard with the most recent fiscal year's data. 
     """)
     next_button(pages_list)
 
@@ -45,9 +49,17 @@ def page_background(pages_list):
 def page_dashboard(pages_list):
     st.header("Explore the Budget Dashboard")
     st.markdown("""
-    Below is an interactive dashboard (Power BI) that displays program expenditures, risks, mandates, and alignment with city strategies.
-
-    Use it to explore trends before doing the training activity. [This is a placeholder until the dashboard is available publically on the City's Instance of Power BI!]
+    This interactive dashboard displays program-level budget data alongside key qualitative attributes from the City's program inventory, including: 
+    - Mandates (legal or regulatory requirements)
+    - Service level requirements set by third parties
+    - Community reliance
+    - Trends in service demand
+    - Program risk and sustainability
+    - Alignment with strategic priorities
+    
+    Use the slicers and filters to explore how budgeted expenditures relate to these attributes. This will help build context before you dive into the training activity.
+    
+    [This is a placeholder until the dashboard is available publically on the City's Instance of Power BI!]
     """)
 
     # Embed Power BI dashboard (replace src with actual embed link when ready)
@@ -60,9 +72,11 @@ def page_dashboard(pages_list):
 def page_training_tool(pages_list):
     st.header("Make Your Budget Decisions")
     st.markdown("""
-    Allocate funding across key strategy areas. After submitting, you'll immediately see how your choices align with City of Missoula priorities.
+    Now it's your turn to allocate funding across City's four strategic pillars. 
     
-    Remember, since nearly half of your total budget is already consumed by mandated and required by law or other requirements you are working with what is left. 
+    Keep in mind that nearly half of the City's total budget is already committed to mandated services and legally required obligations, your task is to decide how to allocate the remaning resources.
+    
+    Once you submit your choices, you'll receive immediate feedback on how your budget reflects City priorities, highlighting potential trade-offs, risks, and areas of alignment.
     """)
 
     # Sliders for allocation
@@ -124,21 +138,25 @@ def page_training_tool(pages_list):
 def page_learn_more(pages_list):
     st.header("Learn More About This Project")
     st.markdown("""
-    This interactive simulator was developed as part of the final Master of Science, Business Analytics (MSBA) Capstone project at the University of Montana.
+    This interactive tool was developed as part of the final Master of Science, Business Analytics (MSBA) Capstone project at the University of Montana.
+                
+    You can dive into the [full budget information for the City of Missoula online.](https://www.ci.missoula.mt.us/budget)
+                
+    Do you have any feedback you'd like to submit? [Feel free to share your thoughts!](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header) 
 
     #### 🎓 Final Project Deliverables
     - Streamlit digital product (this internal training app!)
     - A written product that details the entire data engineering and analysis process, from start to finish. ([View the document](LINKPLACEHOLDER for Final City Link))
     - Power BI Interactive Dashboard Tool (embedded views provided within this training app)
 
-    #### 🔬 Data Sources from Current Fiscal Year (if viewing prior to June 30 of current year)
+    #### 🔬 Data Sources
     - City of Missoula Program Inventory
     - Departmental Expenditure Status
 
     #### 👩‍💻 About the Data Engineering Analyst:
     **Breanna Niekamp** is a data engineer/analyst based in the local area of Missoula, Montana, 
-    who blends storytelling, strategy and design thinking to help increase transparancy communication
-    surrounding priority-based informed budget decisions. 
+    who blends storytelling, strategy and data design thinking to help increase communication transparancy
+    surrounding projects that involve informed data-driven business decisions. 
 
     #### 📂 GitHub Repository:
     [View the codebase](https://github.com/breannanpr/CityofMissoulaBudgetCapstone)

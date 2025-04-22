@@ -12,6 +12,6 @@ def next_button(pages_list):
     """
     idx = st.session_state.get("current_page", 0)
     if idx < len(pages_list) - 1:
-        if st.button("➡️ Next Page"):
+        if st.button("Next Page"):
             st.session_state["current_page"] = idx + 1
             st.rerun()
