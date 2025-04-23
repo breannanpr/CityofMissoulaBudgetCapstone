@@ -1,5 +1,17 @@
 ###############################
 
+# Progress, Problems and Plans for April 22, 2025
+
+Progress: Finished digital product, aside from some content; finished dashboard aside from fine tuning, need to work on paper, github and finishing the digital product and then ensuring the hand off goes smoothly. 
+
+Problems: Nervous about using python in Power BI, but going to do my best to be confident that it will work. Going through a test tonight to see if it will work. This is part of the handoff, so I am thinking it will mostly go smooth, but expecting if there are issues that they will be handled quickly. 
+
+Plans: Test the product on City Instance of Power BI with python code, finish up cleaning code and then deliver to client. 
+
+Hours This Week: 23:03:00
+
+###############################
+
 # Progress, Problems and Plans for April 15, 2025
 
 Progress: Made significant progress on the dashboard, narrowed scope and usecase for that. Meeting and revising with client more frequently this past week to ensure solid and sound product! 
