@@ -1,5 +1,17 @@
 ###############################
 
+# Progress, Problems and Plans for April 29, 2025
+
+Progress: Finished dashboard and delivered to client, found a solution to automate part of the process and ensure that the work will be completed well, decided that Google Colab would be a good place to house the final python code.  
+
+Problems: No current problems, but I believe we should have used Power Automate for the automation process. 
+
+Plans: Finish implementing the automated piece through google colab, finish other components of project (written product, final github format + code submission, final touches of digital product) and then submit in full before due date. Working on Friday as a final. Pending live dashboard, will embed in digital tool and github if able. I will update a final time on Sunday to close out this project log.
+
+Hours This Week: 24:37:40
+
+###############################
+
 # Progress, Problems and Plans for April 22, 2025
 
 Progress: Finished digital product, aside from some content; finished dashboard aside from fine tuning, need to work on paper, github and finishing the digital product and then ensuring the hand off goes smoothly. 
