@@ -14,28 +14,24 @@ The repository is organized as follows:
 ```
 CityofMissoulaBudgetCapstone/
 │
-├── assets/                        # Images and visuals
+├── assets/                                                 # Images and visuals used for the entire project
 │   ├── clean_program_inventory_column_names.png
 │   ├── cleaned_expend_preview.png
 │   ├── cleaned_program_inventory.png
 │   ├── dashboard_view_01.png
 │   ├── dashboard_view_02.png
 │   ├── expend_preview_preclean.png
-│   ├── program_inventory_internal_data_collection.pdf
+│   ├── program_inventory_internal_data_collection.pdf      # PDF version of FY24 Internal Data Collection Survey
 │   ├── program_inventory_preview_preclean.png
 │   ├── sharepoint_library_view.png
-│   └── three_ps_niekamp.txt        # project weekly updates log
+│   └── three_ps_niekamp.txt                                # project weekly updates log
 │
-├── cleaned_outputs/              # Finalized data used by the app + dashboard
+├── cleaned_outputs/                                        # Finalized data used by the app + dashboard
 │   ├── cleaned_expenditure_status.csv
 │   └── cleaned_program_inventory.csv
 │
-├── streamlit_app               # Digital product; internal training tool for city
+├── streamlit_app                                           # Digital product; internal training tool for city
 │   ├── assets/
-│   |    ├── analyst.jpg
-│   |    ├── downtown_river.jpg
-│   |    ├── downtown_scenic.jpg
-│   |    ├── missoula_city_snow.JPG
 │   |    └── welcome_missoula.jpg
 │   ├── digital_product_internal_tool.py
 │   ├── pages.py
@@ -43,17 +39,13 @@ CityofMissoulaBudgetCapstone/
 │   ├── style.py
 │   └── utils.py
 |
-├── code/                         # Jupyter notebooks and scripts
-│   ├── citydata_01_cleaning.ipynb
-│   └── citydata_02_exploratory.ipynb
-│
-├── data/                         # Raw internal City of Missoula data (ignored)
+├── data/                                                   # Raw internal City of Missoula data (ignored)
 │   └── *.xlsx
 │
-├── Budget_Director_App.py        # Streamlit app entry point
-├── requirements.txt              # Python dependencies
-├── README.md                     # You’re reading it!
-└── .gitignore                    # Clean Git tracking
+│── citydata_01_cleaning.ipynb                              # Narrated version of the data cleaning process by step
+│── citydata_02_exploratory.ipynb                           # Narrated version of the data analysis process by step
+├── README.md                                               # You’re reading it!
+└── .gitignore                                              # Clean Git tracking
 ```
 
 
@@ -102,11 +94,11 @@ All cleaning is conducted in Python using modular, documented functions that sup
 **Step 1:** Import Libraries Used
 
 ```
-pandas, numpy               ## Data wrangling
-openpyxl                    ## Excel file I/O
-janitor                     ## Header normalization and chaining helpers
-tqdm, re, os, chardet       ## Cleaning utilities
-missingno, matplotlib.pyplot ## EDA visual tools
+pandas, numpy                   ## Data wrangling
+openpyxl                        ## Excel file I/O
+janitor                         ## Header normalization and chaining helpers
+tqdm, re, os, chardet           ## Cleaning utilities
+missingno, matplotlib.pyplot    ## EDA visual tools
 ```
 
 **Step 2:** Define Cleaning Functions
@@ -114,21 +106,21 @@ missingno, matplotlib.pyplot ## EDA visual tools
 Creating a set of helper functions reduced repetition and provides greater clarity, below are some notable functions used and an explanation of what they do. 
 
 ```
-drop_unnamed_columns() ## Removes Excel filler columns
+drop_unnamed_columns()          ## Removes Excel filler columns
 
-clean_numeric_column() ## Fixes trailing .0 artifacts
+clean_numeric_column()          ## Fixes trailing .0 artifacts
 
-clean_identifiers() ## standardizes key indentifiers and applies formatting
+clean_identifiers()             ## standardizes key indentifiers and applies formatting
 
-expand_multicolumn_headers() ## Converts original clumped "Mandate" column into multiple structured column headers
+expand_multicolumn_headers()    ## Converts original clumped "Mandate" column into multiple structured column headers
 
 apply_department_and_fund_mappings() ## easilty identified mappings for city codes
 
-clean_program_inventory() ## full cleaning pipeline for program inventory data
+clean_program_inventory()       ## full cleaning pipeline for program inventory data
 
 strip_whitespace_and_standardize() ## Cleans casing and trailing spaces
 
-remove_trailing_underscores() ## Final polish on column names
+remove_trailing_underscores()   ## Final polish on column names
 ```
 
 **Step 3:** Load Raw Files
@@ -149,15 +141,15 @@ Creates six individual filtering conditions on the Expenditure Status file;
 Breaks out ```account_number``` within the Expenditure status data into:
 
 ```
-fund_no,    ## related to four digit fund code
+fund_no,                ## related to four digit fund code
 
-dept_no,    ## related to three digit department code
+dept_no,                ## related to three digit department code
 
-activity_code,  ## related to six digit unique activity codes
+activity_code,          ## related to six digit unique activity codes
 
-object_code,    ## related to three digit budget object code
+object_code,            ## related to three digit budget object code
 
-sub_object_code     ## related to three digit sub budget object code
+sub_object_code         ## related to three digit sub budget object code
 ```
 
 
