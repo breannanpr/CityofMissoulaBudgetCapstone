@@ -48,22 +48,29 @@ def page_background(pages_list):
 # ------------------
 def page_dashboard(pages_list):
     st.header("Explore the Budget Dashboard")
-    st.markdown("""
-    This interactive dashboard displays program-level budget data alongside key qualitative attributes from the City's program inventory, including: 
-    - Mandates (legal or regulatory requirements)
-    - Service level requirements set by third parties
-    - Community reliance
-    - Trends in service demand
-    - Program risk and sustainability
-    - Alignment with strategic priorities
-    
-    Use the slicers and filters to explore how budgeted expenditures relate to these attributes. This will help build context before you dive into the training activity.
-    
-    [This is a placeholder until the dashboard is available publically on the City's Instance of Power BI!]
-    """)
 
-    # Embed Power BI dashboard (replace src with actual embed link when ready)
-    # st.components.v1.iframe("https://app.powerbi.com/view?r=YOUR_EMBED_LINK", height=600, scrolling=True)
+    st.markdown("""
+This interactive dashboard displays program-level budget data alongside key qualitative attributes from the City's program inventory, including:
+
+- Mandates (legal or regulatory requirements)
+- Service level requirements set by third parties
+- Community reliance
+- Trends in service demand
+- Program risk and sustainability
+- Alignment with strategic priorities
+
+Use the slicers and filters to explore how budgeted expenditures relate to these attributes. This will help build context before you dive into the training activity.
+""")
+
+    # Embedded Power BI dashboard from secure gov.us environment
+    st.markdown("""
+<iframe title="Final_Dashboard_20250428"
+    width="100%" height="600"
+    src="https://app.powerbigov.us/view?r=eyJrIjoiMTYxNmYxYTgtYjhjZC00YjdhLTliOTItMDY3YmEzODY0ZTczIiwidCI6Ijc4MGM5OGZhLTc3ZDYtNGMwZi05NzJhLTM5YjQ5MGE0ZjY0MSJ9"
+    frameborder="0" allowFullScreen="true">
+</iframe>
+""", unsafe_allow_html=True)
+
     next_button(pages_list)
 
 # ------------------
