@@ -154,29 +154,24 @@ def page_learn_more(pages_list):
                 
     For further in depth information about Missoula's budget process, you can dive into the [City of Missoula's Budget online.](https://www.ci.missoula.mt.us/budget)
                 
-    Do you have any feedback you'd like to submit about this training module? [Feel free to share your thoughts, suggestions and any technical errors!](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header) 
-
-    #### 🎓 Final Project Deliverables
-    - Streamlit digital product (this internal training app!)
-    - A comprehensive written product that details the entire data engineering and analysis process, from start to finish. ([View the document](LINKPLACEHOLDER for Final City Link))
-    - Power BI Interactive Dashboard Tool (embedded views provided within this training app)
-
     #### 🔬 Data Sources
     - City of Missoula Program Inventory
     - Departmental Expenditure Status
 
-    #### 👩‍💻 About the Data Engineering Analyst:
-    """, unsafe_allow_html=True)
-
-    ## Adding in the image
-    img_path = os.path.join("streamlit_app", "assets", "analyst.jpg")
-    st.image(img_path, width=150, caption="Breanna Niekamp", output_format="auto")
-    
-    st.markdown("""
-    **Breanna Niekamp** is a data engineer/analyst based in the local area of Missoula, Montana, 
-    who blends storytelling, strategy and data design thinking to help increase communication transparancy
-    surrounding projects that involve informed data-driven business decisions. 
+    #### 🎓 Final Project Deliverables
+    - Streamlit digital product (this internal training app!)
+    - A comprehensive written product that details the entire data engineering and analysis process, from start to finish. (Located within the GitHub Repository)
+    - Interactive Power BI Dashboard (embedded views provided within this training app)
 
     #### 📂 GitHub Repository:
-    [View the codebase](https://github.com/breannanpr/CityofMissoulaBudgetCapstone)
+    [View the entire codebase and supporting project materials](https://github.com/breannanpr/CityofMissoulaBudgetCapstone)
+                
+    #### 👩‍💻 About the Data Engineering Analyst:
+    [**Breanna Niekamp**](https://www.linkedin.com/in/breanna-niekamp/) is a data engineer/analyst based in the local area of Missoula, Montana, 
+    who blends storytelling, strategy and data design thinking to help increase communication transparancy
+    surrounding projects that involve informed data-driven business decisions.
+    
+    #### Feedback and Technical Support
+    Do you have any feedback you'd like to submit about this training module? [Feel free to share your thoughts, suggestions and any technical errors!](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header) 
+
     """, unsafe_allow_html=True)
