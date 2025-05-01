@@ -17,12 +17,14 @@ def page_welcome(pages_list):
     A few important notes before you being: 
     - This tool presents budgeted expenditures only, not actual spending. 
     - Transfers have been excluded to avoid double counting, and revenues are not shown. 
-    - The data reflects a single fiscal year at a time. 
+    - The interactive dashboard data views reflect a single fiscal year at a time. 
     - The information is drawn from program inventory sheets completed by budget managers for every budgeted expenditure across the City.  
     
-    While this is not a comprehensive view of the full City budget, it offers valuable context about how resources are allocated to support strategic priorities. 
+    While this is not a comprehensive view of the full City budget, it offers valuable context about how resources are allocated to support strategic budget priorities. 
                 
-    Use the navigation above to explore background context, interact with real program data, and try your hand at making funding decisions!
+    Use the navigation above to explore background context, interact with real program data, and try your hand at making funding decisions! 
+                
+    You may also advance to the next page by selecting the next button at the bottom of each page. 
     """)
     next_button(pages_list)
 
@@ -36,7 +38,7 @@ def page_background(pages_list):
 
     This tool will help you:
     - Build familiarity with **program-level budgeting**
-    - Show how **strategic priorities influence financial choices**
+    - Demonstrate how **strategic priorities influence financial choices**
     - Practice **navigating public data** and consider **budget trade-offs**
 
     This tool includes visualizations, a hands-on activity, and a lined dashboard with the most recent fiscal year's data. 
@@ -47,7 +49,7 @@ def page_background(pages_list):
 # Dashboard Page
 # ------------------
 def page_dashboard(pages_list):
-    st.header("Explore the Budget Dashboard")
+    st.header("Explore the Program Inventory and Budget Dashboard")
 
     st.markdown("""
 This interactive dashboard displays program-level budget data alongside key qualitative attributes from the City's program inventory, including:
@@ -65,7 +67,7 @@ Use the slicers and filters to explore how budgeted expenditures relate to these
     # Embedded Power BI dashboard from secure gov.us environment
     st.markdown("""
 <iframe title="Final_Dashboard_20250428"
-    width="100%" height="600"
+    width="100%" height="650"
     src="https://app.powerbigov.us/view?r=eyJrIjoiMTYxNmYxYTgtYjhjZC00YjdhLTliOTItMDY3YmEzODY0ZTczIiwidCI6Ijc4MGM5OGZhLTc3ZDYtNGMwZi05NzJhLTM5YjQ5MGE0ZjY0MSJ9"
     frameborder="0" allowFullScreen="true">
 </iframe>
@@ -79,11 +81,11 @@ Use the slicers and filters to explore how budgeted expenditures relate to these
 def page_training_tool(pages_list):
     st.header("Make Your Budget Decisions")
     st.markdown("""
-    Now it's your turn to allocate funding across City's four strategic pillars. 
+    Now it's your turn to allocate some of the remaining funding across the City of Missoula's four strategic pillars. 
     
-    Keep in mind that nearly half of the City's total budget is already committed to mandated services and legally required obligations, your task is to decide how to allocate the remaning resources.
+    Keep in mind that in the dashboard you were able to see how nearly half of the City's total budget is already committed to mandated services and legally required obligations, your task is to decide how to allocate the remaining resources.
     
-    Once you submit your choices, you'll receive immediate feedback on how your budget reflects City priorities, highlighting potential trade-offs, risks, and areas of alignment.
+    As you make your choices, you'll receive immediate feedback on how your budget reflects City priorities, highlighting potential trade-offs, risks, and areas of alignment.
     """)
 
     # Sliders for allocation
@@ -113,26 +115,29 @@ def page_training_tool(pages_list):
         # Add conditional feedback logic
         if safety >= 40:
             impact.append("✅ Strong investment in community safety and well-being.")
-        elif safety < 20:
+        elif safety < 30:
             impact.append("⚠️ Low funding may impact emergency services and public health.")
 
         if community >= 35:
             impact.append("✅ Clear priority on community design and livability.")
-        elif community < 15:
+        elif community < 30:
             impact.append("⚠️ Risk of underfunding quality of life and placemaking programs.")
 
         if resilience >= 25:
             impact.append("✅ Emphasis on internal systems and sustainable operations.")
-        elif resilience < 10:
+        elif resilience < 20:
             impact.append("⚠️ Low investment in internal infrastructure may reduce efficiency.")
 
         if economy >= 15:
             impact.append("✅ Support for business development and economic resilience.")
-        elif economy < 5:
+        elif economy < 10:
             impact.append("⚠️ Limited focus on local economic growth and jobs.")
 
         if total > 100:
             impact.append("⚠️ Your allocation exceeds 100%. Please rebalance.")
+
+        if total < 100:
+            impact.append("You still have some budget left! See if you can allocate more towards some of the strategic goals.")
 
         for line in impact:
             st.markdown(f"- {line}")
@@ -145,15 +150,15 @@ def page_training_tool(pages_list):
 def page_learn_more(pages_list):
     st.header("Learn More About This Project")
     st.markdown("""
-    This interactive tool was developed as part of the final Master of Science, Business Analytics (MSBA) Capstone project at the University of Montana.
+    This interactive tool was developed as part of a Master of Science, Business Analytics (MSBA) Capstone project at the University of Montana.
                 
-    You can dive into the [full budget information for the City of Missoula online.](https://www.ci.missoula.mt.us/budget)
+    For further in depth information about Missoula's budget process, you can dive into the [City of Missoula's Budget online.](https://www.ci.missoula.mt.us/budget)
                 
-    Do you have any feedback you'd like to submit? [Feel free to share your thoughts!](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header) 
+    Do you have any feedback you'd like to submit about this training module? [Feel free to share your thoughts, suggestions and any technical errors!](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header) 
 
     #### 🎓 Final Project Deliverables
     - Streamlit digital product (this internal training app!)
-    - A written product that details the entire data engineering and analysis process, from start to finish. ([View the document](LINKPLACEHOLDER for Final City Link))
+    - A comprehensive written product that details the entire data engineering and analysis process, from start to finish. ([View the document](LINKPLACEHOLDER for Final City Link))
     - Power BI Interactive Dashboard Tool (embedded views provided within this training app)
 
     #### 🔬 Data Sources
@@ -161,6 +166,13 @@ def page_learn_more(pages_list):
     - Departmental Expenditure Status
 
     #### 👩‍💻 About the Data Engineering Analyst:
+    """, unsafe_allow_html=True)
+
+    ## Adding in the image
+    img_path = os.path.join("streamlit_app", "assets", "analyst.jpg")
+    st.image(img_path, width=150, caption="Breanna Niekamp", output_format="auto")
+    
+    st.markdown("""
     **Breanna Niekamp** is a data engineer/analyst based in the local area of Missoula, Montana, 
     who blends storytelling, strategy and data design thinking to help increase communication transparancy
     surrounding projects that involve informed data-driven business decisions. 
@@ -168,4 +180,3 @@ def page_learn_more(pages_list):
     #### 📂 GitHub Repository:
     [View the codebase](https://github.com/breannanpr/CityofMissoulaBudgetCapstone)
     """, unsafe_allow_html=True)
-

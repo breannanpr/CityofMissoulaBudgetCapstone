@@ -57,7 +57,7 @@ def apply_custom_styles():
 
             /* Header image styling - reduce vertical space usage */
             .stImage > img {
-                max-height: 150px; /* Control height of top banner */
+                max-height: 125px; /* Control height of top banner */
                 object-fit: cover;  /* Ensure clean aspect ratio */
                 width: 90%; /* Full-width responsiveness */
             }
