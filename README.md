@@ -18,13 +18,15 @@ CityofMissoulaBudgetCapstone/
 │   ├── clean_program_inventory_column_names.png
 │   ├── cleaned_expend_preview.png
 │   ├── cleaned_program_inventory.png
+│   ├── colab_upload_files.png
+│   ├── colab_runtime.png
 │   ├── dashboard_view_01.png
 │   ├── dashboard_view_02.png
 │   ├── expend_preview_preclean.png
 │   ├── program_inventory_internal_data_collection.pdf      # PDF version of FY24 Internal Data Collection Survey
 │   ├── program_inventory_preview_preclean.png
 │   ├── sharepoint_library_view.png
-│   └── three_ps_niekamp.txt                                # project weekly updates log
+│   └── three_ps_niekamp.txt                                # Weekly Project Updates Log
 │
 ├── cleaned_outputs/                                        # Finalized data used by the app + dashboard
 │   ├── cleaned_expenditure_status.csv
