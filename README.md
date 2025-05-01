@@ -88,7 +88,7 @@ The City of Missoula focuses on priority based budgeting practices. This is esse
 **[Currently in progress of implementation]**
 In order to begin a refreshed cycle of visualizing the City of Missoula's Program Inventory data, a City of Missoula employee will download data from both the Workiva Platform (Program Inventory Dataset) and Tyler Edens Platform (Expenditure Status Dataset) beginning January 1, 2024 through the current applicable year. Ensuring the dashboarding tool maintain accuracy for year over year comparisons. In all there will be two files; Expenditure Status and Program Inventory Internal Data Collection. 
 
-These three files will be uploaded into the Sharepoint Site: ***"[Missoula PBI - City Program Inventory Budget Breakdown](https://cityofmissoulagcc.sharepoint.com/sites/MissoulaPBI/CPIBB/Forms/AllItems.aspx)"***. 
+These two files will be uploaded into the Sharepoint Site: ***"[Missoula PBI - City Program Inventory Budget Breakdown](https://cityofmissoulagcc.sharepoint.com/sites/MissoulaPBI/CPIBB/Forms/AllItems.aspx)"***. 
 
 From this, the files will automatically undergo a cleaning and transformation process, as elaborated in the following section. 
 

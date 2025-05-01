@@ -163,10 +163,10 @@ def page_learn_more(pages_list):
     - A comprehensive written product that details the entire data engineering and analysis process, from start to finish. (Located within the GitHub Repository)
     - Interactive Power BI Dashboard (embedded views provided within this training app)
 
-    #### 📂 GitHub Repository:
+    #### 📂 GitHub Repository
     [View the entire codebase and supporting project materials](https://github.com/breannanpr/CityofMissoulaBudgetCapstone)
                 
-    #### 👩‍💻 About the Data Engineering Analyst:
+    #### 👩‍💻 About the Data Engineering Analyst
     [**Breanna Niekamp**](https://www.linkedin.com/in/breanna-niekamp/) is a data engineer/analyst based in the local area of Missoula, Montana, 
     who blends storytelling, strategy and data design thinking to help increase communication transparancy
     surrounding projects that involve informed data-driven business decisions.
