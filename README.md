@@ -20,7 +20,7 @@ CityofMissoulaBudgetCapstone/
 │   ├── budget_data_cleaning_procedure_20250502.pdf     # Procedural Document for Annual Process
 │   ├── FY2025_chart_of_acct_structure.pdf              # Supporting Document of Budget Hierarchy
 │   ├── program_inventory_internal_data_collection.pdf  # FY24 Internal Data Collection Survey
-│   ├── written_product_niekamp_20250502.pdf            # Written Product
+│   ├── written_product_niekamp_20250502_v4.pdf         # Written Product
 │   └── three_ps_niekamp.txt                            # Weekly Project Updates Log
 │
 ├── cleaned_outputs/                                    # Final clean data for app + dashboard
@@ -49,6 +49,14 @@ CityofMissoulaBudgetCapstone/
 - **FY24_Expenditure_Status.xlsx**: Budget account-level data with activity, department and objective codes. Export from Tyler Edens.
 - **Program_Inventory_Internal_Data_Collection.xlsx**: Survey-based program intake / inventory that includes attributes about specific programming (mandates, trends, risks, etc.) Export from Workiva. 
 
+## Final Deliverables Overview
+- Final [**Program Inventory and Expenditure Dashboard**](https://app.powerbigov.us/view?r=eyJrIjoiMTYxNmYxYTgtYjhjZC00YjdhLTliOTItMDY3YmEzODY0ZTczIiwidCI6Ijc4MGM5OGZhLTc3ZDYtNGMwZi05NzJhLTM5YjQ5MGE0ZjY0MSJ9)
+- Final Digital Product and [**Internal Training Tool for Expenditure Status**](https://expendituretrainingmt2025.streamlit.app/)
+- Final [**Written Product**](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/blob/main/assets/written_product_niekamp_20250502_v4.pdf), Elevating Decision-Making in Missoula's Budget Adoption Process
+- [**Budget Data Cleaning Procedure Documentation**](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/blob/main/assets/budget_data_cleaning_procedure_20250502.pdf)
+- [**Google Colab Environment**](https://colab.research.google.com/drive/1d5DcpU9pPE3S6YncbMMwBcjf7saI8NgW?usp=sharing) that contains the Data Cleaning Pipeline
+- [**Exploratory Analysis Jupyter Notebook**](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/blob/main/citydata_02_exploratory.ipynb) for FY24 Data 
+
 
 ## Methodology
 
@@ -56,30 +64,22 @@ The City of Missoula focuses on priority based budgeting practices. This is esse
 
 
 ### Key Definitions
-**Program**: City-funded service or function with a 6-digit code, representing a specific output or public-facing activity. 
-
-**Mandate**: Legally required (federal, state or court-appointed). Does not include contract-based or optional services. 
-
-**Service Level Requirements (External)**: Rules imposed by external entities (ex., regulatory agencies), even if the program itself isn't mandated.
-
-**Reliance**: Community dependence or risk of disruption if removed from the community. High reliance = wide usage, few alternatives, or critical outcomes. 
-
-**Trend**: Indicates whether the program's demand is growing, stable, declining or evolving due to external factors. 
-
-**Risk**: Assesses potential challenges in the next 1-3 years (ex., funding cuts, staffing issues, legal changes).
-
-**Cost Recovery**: Indicates whether or not a program experiences any form of cost recovery meaning, a portion of program costs are offset by revenue sources.
+- **Program**: City-funded service or function with a 6-digit code, representing a specific output or public-facing activity. 
+- **Mandate**: Legally required (federal, state or court-appointed). Does not include contract-based or optional services. 
+- **Service Level Requirements (External)**: Rules imposed by external entities (ex., regulatory agencies), even if the program itself isn't mandated.
+- **Reliance**: Community dependence or risk of disruption if removed from the community. High reliance = wide usage, few alternatives, or critical outcomes. 
+- **Trend**: Indicates whether the program's demand is growing, stable, declining or evolving due to external factors. 
+- **Risk**: Assesses potential challenges in the next 1-3 years (ex., funding cuts, staffing issues, legal changes).
+- **Cost Recovery**: Indicates whether or not a program experiences any form of cost recovery meaning, a portion of program costs are offset by revenue sources.
 
 
 ### Annual Cleaning and Transformation Process
 
 While the process below is detailed for this repository, ultimately Google Colab was used to perform and carry out the final cleaning pipeline. 
 
-In order to begin a refreshed cycle of visualizing the City of Missoula's Program Inventory data, a City of Missoula employee follow the guidelines and tasks outlined in the supporting [budget data cleaning documentation](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/blob/main/assets/budget_data_cleaning_procedure_20250502.pdf), provided to the city. 
+In order to begin a refreshed cycle of visualizing the City of Missoula's Program Inventory data, a City of Missoula employee follow the guidelines and tasks outlined in the supporting **[budget data cleaning documentation](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/blob/main/assets/budget_data_cleaning_procedure_20250502.pdf)**, provided to the city. 
 
-Once the steps are carried out, two cleaned files are uploaded into the the appropriate Sharepoint Site folder: ***"[Missoula PBI - City Program Inventory Budget Breakdown](https://cityofmissoulagcc.sharepoint.com/sites/MissoulaPBI/CPIBB/Forms/AllItems.aspx)"***. 
-
-After the process is completed in full, the user will have a fully updated interactive dashboard. 
+Once the steps are carried out, two cleaned files are uploaded into the the appropriate Sharepoint Site folder: **[Missoula PBI - City Program Inventory Budget Breakdown](https://cityofmissoulagcc.sharepoint.com/sites/MissoulaPBI/CPIBB/Forms/AllItems.aspx)**. After the process is completed in full, the user will have a fully updated interactive dashboard. 
 
 All cleaning is conducted in Python using modular, documented functions that support automation and integration with the Power BI Platform. For a more comprehensive breakdown of each of the steps, please review the ```citydata_01_cleaning.ipynb``` in this repository. 
 
@@ -191,11 +191,9 @@ Explore:
 - Understanding how strategic goals align with priority-based budgeting
 - Understanding the breakdown of what is included in all of the budgeted costs for a program. 
 
-[Launch App (Streamlit Cloud)](https://expendituretrainingmt2025.streamlit.app/)
+**[Launch App (Streamlit Cloud)](https://expendituretrainingmt2025.streamlit.app/)** | [View the Full Code: **Streamlit_app**](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/tree/main/streamlit_app)
 
-*View the Full Code:* [streamlit_app](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/tree/main/streamlit_app)
-
-[Leave a comment about your experience](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header) with the training tool. 
+**[Leave a comment about your experience](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header)** with the training tool. 
 
 
 ## Raw Data to Power BI Pipeline
@@ -210,7 +208,7 @@ This partially manual and automatic data cleaning pipeline utilizes Google Colab
 
 
 **2. Navigate to Google Colab for Cleaning and Transformation**
-- [Program Inventory and Expenditure Data Cleaning Notebook](https://colab.research.google.com/drive/1d5DcpU9pPE3S6YncbMMwBcjf7saI8NgW?usp=sharing) in Google Colab. 
+- **[Program Inventory and Expenditure Data Cleaning Notebook](https://colab.research.google.com/drive/1d5DcpU9pPE3S6YncbMMwBcjf7saI8NgW?usp=sharing)** in Google Colab. 
 - Google Colab will prompt the user to upload the required Excel files, then clean the files accordingly to the methodology used in this Repository. 
 - Once the cleaning process is complete, the user may download the cleaned .csv files
 
@@ -220,8 +218,6 @@ This partially manual and automatic data cleaning pipeline utilizes Google Colab
 
 ![Screenshot of SharePoint Library View](/assets/sharepoint_library_view.png)
 
-Once this process is complete, the dashboard should update to reflect the new data accordingly. 
-
 
 **3. Refresh the Dashboard (Optional)**
 
@@ -230,13 +226,13 @@ Once the files are uploaded properly the Dashboard should reflect the update, ho
 
 ### Dashboard Features
 
-The [Program Inventory and Expenditure Power BI Dashboard](https://app.powerbigov.us/view?r=eyJrIjoiMTYxNmYxYTgtYjhjZC00YjdhLTliOTItMDY3YmEzODY0ZTczIiwidCI6Ijc4MGM5OGZhLTc3ZDYtNGMwZi05NzJhLTM5YjQ5MGE0ZjY0MSJ9) will support: 
+The **[Program Inventory and Expenditure Power BI Dashboard](https://app.powerbigov.us/view?r=eyJrIjoiMTYxNmYxYTgtYjhjZC00YjdhLTliOTItMDY3YmEzODY0ZTczIiwidCI6Ijc4MGM5OGZhLTc3ZDYtNGMwZi05NzJhLTM5YjQ5MGE0ZjY0MSJ9)** will support: 
 - Maximum filtering by fiscal year, fund, trend (demand), mandate, service level, risk type, cost recovery, and reliance. 
-- Visual Summaries for: 
+- Visual Summaries for understanding: 
     - Strategic Goal Alignment
     - Budget by Program and Department
-    - Understanding Mandated and Service Level Requirements 
-    - Understanding Cost Breakdown by Capital, O&M, Personnel, Grant, Total Expenditures and Cost Recovery (%)
+    - Mandated and Service Level Requirements 
+    - Cost Breakdown by Capital, O&M, Personnel, Grant, Total Expenditures and Cost Recovery (%)
 
 ![Placeholder for Dashboard Embedded View #1](assets/dashboard_view_01.png)
 
@@ -244,7 +240,7 @@ The [Program Inventory and Expenditure Power BI Dashboard](https://app.powerbigo
 
 
 ## Exploratory Analysis and Key Findings
-The notebook [citydata_02_exploratory.ipynb](code/citydata_02_exploratory.ipynb) dives into the cleaned data to identify patterns, ensure data integrity, and inform both the app and dashboard. The respository notebook contains well docummented narrative and breaks this process into a more detailed step-by-step process. 
+The notebook **[citydata_02_exploratory.ipynb](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/blob/main/citydata_02_exploratory.ipynb)** dives into the cleaned data to identify patterns, ensure data integrity, and inform both the app and dashboard. The respository notebook contains well docummented narrative and breaks this process into a more detailed step-by-step process. 
 
 Exploratory analysis in general is an essential for validating the success of the cleaning process and surfacing analytical insights before building visualizations. The referenced notebook is summarized as follows:
 
@@ -281,7 +277,7 @@ df_programs['strategic_goal_e66_name'].value_counts().head(10)
 ```
 
 
-**Steps 6 through 13: Deeper Dive into Data
+**Steps 6 through 13: Deeper Dive into Data**
 - Budget Allocation Breakdown 
 - Mandate, Risk and Trend Distributions
 - FTE vs Total Spending 
@@ -314,7 +310,7 @@ streamlit
 
 ## Feedback Welcome!
 If you'd like to adapt this work to your city or department, feel free to fork the repo or reach out. 
-***This work is open for public use under civic good licensing.***
+*This work is open for public use under civic good licensing.*
 
 
 ## Appendicies 
