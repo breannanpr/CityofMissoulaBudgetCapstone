@@ -204,7 +204,7 @@ Final files are saved to cleaned_outputs/ for use in:
 
 
 ## Streamlit Digital Product: Internal Training Tool
-The Streamlit app allows the user to experience what it is like to be included in the budget planning process in the City of Missoula. Whether you are planning to run for city council, mayor or support the city by joining the finance department - This tool educates understanding of budget tradeoffs by allocating funds across the four strategic goals; Community Design and Livability, Community Saftety Health and Well-Being, Organizational Excellence and Resilience, and Economic Health using priority-based budgeting practices.
+The Streamlit app allows the user to experience what it is like to be included in the budget planning process in the City of Missoula. Whether you are planning to run for a position on the City Council, aspire to be the Mayor or will be filling a supporting staff role - This tool educates understanding of budget tradeoffs by allocating funds across the four strategic goals; Community Design and Livability, Community Saftety Health and Well-Being, Organizational Excellence and Resilience, and Economic Health using priority-based budgeting practices.
 
 Explore:
 - Understanding how program risks, requirements and mandates reduce available budget
@@ -215,19 +215,21 @@ Explore:
 
 *View the Full Code:* [streamlit_app](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/tree/main/streamlit_app)
 
-[Leave a comment about your experience with the training tool:](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header)
+[Leave a comment about your experience](https://docs.google.com/forms/d/e/1FAIpQLSdOltLVM-Sb7vrwDpKbwmf82047GzrqpWmDYE8fHGUFD-22lw/viewform?usp=header) with the training tool. 
 
 
-## Power BI Integration
+## Raw Data to Power BI Pipeline
 **[Currently in progress, will be adding more information to this section. Currently the process is as below]**
 
-This pipeline is automated directly within Power BI. 
+This partially manual and automatic data cleaning pipeline utilizes Google Colab as a data cleaning processor to host python code in an interactive environment for the employee carrying out the task. 
 
-**1. Beginning with the SharePoint Library File Drop**
+**1. Beginning Extracting the Raw Data Files**
 
-Raw .xlsx files (Expenditure Status, Program Inventory) are uploaded to the desginated *yellow* SharePoint folder "01_raw_data".
+Raw .xlsx files (Expenditure Status, Program Inventory) are extracted and saved within the employees desktop. 
 
-![Screenshot of SharePoint Library View](/assets/sharepoint_library_view.png)
+From here, they will navigate to the [Program Inventory and Expenditure Data Cleaning Notebook](https://colab.research.google.com/drive/1d5DcpU9pPE3S6YncbMMwBcjf7saI8NgW?usp=sharing) in Google Colab. 
+
+
 
 File format "Expenditure_Status.xlsx" for Expenditure Status. 
 
@@ -250,11 +252,11 @@ Once this process is complete, the dashboard should update to reflect the new da
 
 Users only need to upload raw files. The cleaning script takes care of the rest - cleaning, mapping, and shaping all the data in real-time. 
 
+![Screenshot of SharePoint Library View](/assets/sharepoint_library_view.png)
 
 ### Dashboard Features
 
-***[Currently in progress, this is how the process will be laid out in the future]***
-Power BI will support: 
+The [Program Inventory and Expenditure Power BI Dashboard](https://app.powerbigov.us/view?r=eyJrIjoiMTYxNmYxYTgtYjhjZC00YjdhLTliOTItMDY3YmEzODY0ZTczIiwidCI6Ijc4MGM5OGZhLTc3ZDYtNGMwZi05NzJhLTM5YjQ5MGE0ZjY0MSJ9) will support: 
 - Maximum filtering by fiscal year, fund, trend (demand), mandate, service level, risk type, cost recovery, and reliance. 
 - Visual Summaries for: 
     - Strategic Goal Alignment
