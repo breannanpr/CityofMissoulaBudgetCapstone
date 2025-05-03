@@ -2,52 +2,45 @@
 
 
 ## Overview
-This repository contains the capstone project for the City of Missoula Finance Department, supported by Mayor Andrea Davis. The goal is to enhance the City's priority-based budgeting and program transparency through structured data cleaning and the creation of a centralized Power BI dashboard.
+This repository supports the City of Missoula’s public budgeting efforts by connecting raw financial data with narrative program information through an interactive Power BI dashboard and internal training tool. This project was developed in partnership with the City of Missoula Finance Department and is being used to support long-term transparency, strategic alignment, and informed decision-making across City government.
 
-By combining budget data and program-level survey responses, this tool enables better strategic planning and decision-making by elected officials and city leadership.
+This project serves as the hub for the Master of Science in Business Analytics final capstone project. 
 
 
 ## Project Structure
 
-The repository is organized as follows: 
+While the image files were removed from the below summary list, they can be found in the assets/ folder. 
+
+The repository is organized as follows for brevity: 
 
 ```
 CityofMissoulaBudgetCapstone/
 │
-├── assets/                                                 # Images and visuals used for the entire project
-│   ├── clean_program_inventory_column_names.png
-│   ├── cleaned_expend_preview.png
-│   ├── cleaned_program_inventory.png
-│   ├── colab_upload_files.png
-│   ├── colab_runtime.png
-│   ├── dashboard_view_01.png
-│   ├── dashboard_view_02.png
-│   ├── expend_preview_preclean.png
-│   ├── program_inventory_internal_data_collection.pdf      # PDF version of FY24 Internal Data Collection Survey
-│   ├── program_inventory_preview_preclean.png
-│   ├── sharepoint_library_view.png
-│   └── three_ps_niekamp.txt                                # Weekly Project Updates Log
+├── assets/                                             # Images and visuals used for the entire project
+│   ├── budget_data_cleaning_procedure_20250502.pdf     # Final Procedural Document for Annual Process
+│   ├── FY2025_chart_of_acct_structure.pdf              # Supporting documentation of budget hierarchy 
+│   ├── program_inventory_internal_data_collection.pdf  # PDF version of FY24 Internal Data Collection Survey
+│   └── three_ps_niekamp.txt                            # Weekly Project Updates Log
 │
-├── cleaned_outputs/                                        # Finalized data used by the app + dashboard
+├── cleaned_outputs/                                    # Final clean data used by the app + dashboard
 │   ├── cleaned_expenditure_status.csv
 │   └── cleaned_program_inventory.csv
 │
-├── streamlit_app                                           # Digital product; internal training tool for city
+├── streamlit_app                                       # Digital product python files; internal training tool for city
 │   ├── assets/
-│   |    └── welcome_missoula.jpg
 │   ├── digital_product_internal_tool.py
 │   ├── pages.py
 │   ├── requirements.txt
 │   ├── style.py
 │   └── utils.py
 |
-├── data/                                                   # Raw internal City of Missoula data (ignored)
+├── data/                                               # Raw internal City of Missoula data (ignored)
 │   └── *.xlsx
 │
-│── citydata_01_cleaning.ipynb                              # Narrated version of the data cleaning process by step
-│── citydata_02_exploratory.ipynb                           # Narrated version of the data analysis process by step
-├── README.md                                               # You’re reading it!
-└── .gitignore                                              # Clean Git tracking
+│── citydata_01_cleaning.ipynb                          # Narrated data cleaning process by step
+│── citydata_02_exploratory.ipynb                       # Narrated data analysis process by step
+├── README.md                                           # You’re reading it!
+└── .gitignore                                          # Clean Git tracking
 ```
 
 
@@ -61,6 +54,7 @@ These files are exported from the City of Missoula's Workiva (Wdesk) instance an
 ## Methodology
 
 The City of Missoula focuses on priority based budgeting practices. This is essential given that many programs are required by various factors. Because this topic is easily misconstrued, here is a summary of frequent terminology used in this project (More detailed definitions available in Appendicies). 
+
 
 ### Key Definitions
 **Program**: City-funded service or function with a 6-digit code, representing a specific output or public-facing activity. 
@@ -79,17 +73,18 @@ The City of Missoula focuses on priority based budgeting practices. This is esse
 
 
 ### Extraction Process
-**[Currently in progress of implementation]**
-In order to begin a refreshed cycle of visualizing the City of Missoula's Program Inventory data, a City of Missoula employee will download data from both the Workiva Platform (Program Inventory Dataset) and Tyler Edens Platform (Expenditure Status Dataset) beginning January 1, 2024 through the current applicable year. Ensuring the dashboarding tool maintain accuracy for year over year comparisons. In all there will be two files; Expenditure Status and Program Inventory Internal Data Collection. 
+In order to begin a refreshed cycle of visualizing the City of Missoula's Program Inventory data, a City of Missoula employee follow the guidelines and tasks outlined in the supporting [budget data cleaning documentation](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/blob/main/assets/budget_data_cleaning_procedure_20250502.pdf), provided to the city. 
 
-These two files will be uploaded into the Sharepoint Site: ***"[Missoula PBI - City Program Inventory Budget Breakdown](https://cityofmissoulagcc.sharepoint.com/sites/MissoulaPBI/CPIBB/Forms/AllItems.aspx)"***. 
+Once the steps are carried out, two cleaned files are uploaded into the the appropriate Sharepoint Site folder: ***"[Missoula PBI - City Program Inventory Budget Breakdown](https://cityofmissoulagcc.sharepoint.com/sites/MissoulaPBI/CPIBB/Forms/AllItems.aspx)"***. 
 
-From this, the files will automatically undergo a cleaning and transformation process, as elaborated in the following section. 
+After the process is completed in full, the user will have a fully updated interactive dashboard. 
 
 
 ### Cleaning & Transformation Process
 
 All cleaning is conducted in Python using modular, documented functions that support automation and integration with the Power BI Platform. For a more comprehensive breakdown of each of the steps, please review the ```citydata_01_cleaning.ipynb``` in this repository. 
+
+While the process below is detailed for this repository, ultimately Google Colab was used to perform and carry out the final cleaning pipeline. 
 
 
 #### Steps Summary
@@ -219,8 +214,6 @@ Explore:
 
 
 ## Raw Data to Power BI Pipeline
-**[Currently in progress, will be adding more information to this section. Currently the process is as below]**
-
 This partially manual and automatic data cleaning pipeline utilizes Google Colab as a data cleaning processor to host python code in an interactive environment for the employee carrying out the task. 
 
 **1. Beginning Extracting the Raw Data Files**
@@ -253,6 +246,7 @@ Once this process is complete, the dashboard should update to reflect the new da
 Users only need to upload raw files. The cleaning script takes care of the rest - cleaning, mapping, and shaping all the data in real-time. 
 
 ![Screenshot of SharePoint Library View](/assets/sharepoint_library_view.png)
+
 
 ### Dashboard Features
 
@@ -356,22 +350,24 @@ Risk analysis is a critical lens — high-cost programs often carry operational 
 
 The outputs informed both the Streamlit app logic and future Power BI dashboards.
 
+
 ## Requirements
 
-Python 3.9+ and the following libraries: 
+To Run locally, Python 3.9+ and the following libraries: 
 
 ```
-streamlit
 pandas
+openpyxl
+pyjanitor
 matplotlib
-seaborn
-Pillow
+missingno
+streamlit
 ```
 
 
 ## Feedback Welcome!
 If you'd like to adapt this work to your city or department, feel free to fork the repo or reach out. 
-***This work is open for public use under civic good licensing. ***
+***This work is open for public use under civic good licensing.***
 
 
 ## Appendicies 
@@ -392,27 +388,27 @@ If you'd like to adapt this work to your city or department, feel free to fork t
 12. transfers_g31: Transfers between funds or departments.
 13. capital_g32: Capital expenditures for infrastructure or equipment.
 14. total_expenditures_g33: Sum of all budgeted costs for the program.
-15. cost_recovery_e58_yn: Portion of program costs offset by revenue sources.
-16. cost_recovery_p24_percent: 
+15. cost_recovery_e58_yn: Count of program that are or are not offset by revenue sources.
+16. cost_recovery_p24_percent: Percent of program costs offset by revenue sources. 
 17. description_e12: Written explanation of the program’s purpose and activities, why it exists and how it benefits the community.
 18. additional_activities_e20: Notes extra roles, services, or responsibilities.
-19. mandate_e41_yn: Indicates legal requirement (federal, state or court-appointed), authority, and rationale. Does not include contract-based or optional services. 
-20. mandate_h41_entity:
-21: mandate_e43_descript:
-22. service_requirement_e47_yn: Describes service requirements or rules imposed by external entities (regulatory agencies), even if program is not mandated and provies justification.
-23. service_requirement_h47_entity:
-24. service_requirement_e49_descript:
-25. reliance_e53_level: Captures both community dependence and risk of disruption if removed from the community. High reliance = wide usage, few alternatives, or critical outcomes.
-26. reliance_e55_high_descript:
-27. strategic_goal_e64_yn: Tags which City strategic goals the program supports.
-28. strategic_goal_e66_name:
-29. strategic_goal_e68_action_descript:
-30. strategic_goal_e74_additional_activities:
-31. strategic_goal_e80_2nd_additional_activities:
+19. mandate_e41_yn: Indicates whether or not a program is a legal requirement, defined by the entity. Does not include contract-based or optional services. 
+20. mandate_h41_entity: Federal, state or court-appointed authority distinguishing value.
+21: mandate_e43_descript: Further written description of the mandated rationale
+22. service_requirement_e47_yn: Describes whether or not a program has a service requirements or rules imposed by external entities, even if program is not mandated and provies justification.
+23. service_requirement_h47_entity: Regulatory agency as defined.
+24. service_requirement_e49_descript: Justification for service requirements. 
+25. reliance_e53_level: Captures both community dependence and risk of disruption if removed from the community. 
+26. reliance_e55_high_descript: High reliance = wide usage, few alternatives, or critical outcomes.
+27. strategic_goal_e64_yn: Indicates whether or not a program supports any of the City strategic goals.
+28. strategic_goal_e66_name: Name of city goal as they apply. 
+29. strategic_goal_e68_action_descript: Description of activites relating to strategic goals. 
+30. strategic_goal_e74_additional_activities: Additional field for description informaton about strategic goals. 
+31. strategic_goal_e80_2nd_additional_activities: Second additional field for strategic goal descriptions.
 32. trend_demand_e87_level: Describes changes in demand or usage over time, indicates whether a programs demand is growing, stable, declining or evolving due to external factors.
-33. trend_demand_e89_descript:
+33. trend_demand_e89_descript: Provides explanation to pair with the current demand and trend levels. 
 34. risk_e93_type: Identifies short-term risks and supporting notes; assesses potential challenges in the next 1-3 years (ex., funding cuts, staffing issues, legal changes).
-35. risk_e95_descript:
+35. risk_e95_descript: Describes the risk type indicated in greater detail. 
 
 ### Appendix 1B: Cleaned Expenditure Status Data Columns 
 
