@@ -4,7 +4,7 @@
 ## Overview
 This repository supports the City of Missoula’s public budgeting efforts by connecting raw financial data with narrative program information through an interactive Power BI dashboard and internal training tool. This project was developed in partnership with the City of Missoula Finance Department and is being used to support long-term transparency, strategic alignment, and informed decision-making across City government.
 
-This project serves as the hub for the Master of Science in Business Analytics final capstone project. 
+This project serves as the hub for a final Capstone Project for the MSBA program at the University of Montana.
 
 
 ## Project Structure
@@ -16,17 +16,18 @@ The repository is organized as follows for brevity:
 ```
 CityofMissoulaBudgetCapstone/
 │
-├── assets/                                             # Images and visuals used for the entire project
-│   ├── budget_data_cleaning_procedure_20250502.pdf     # Final Procedural Document for Annual Process
-│   ├── FY2025_chart_of_acct_structure.pdf              # Supporting documentation of budget hierarchy 
-│   ├── program_inventory_internal_data_collection.pdf  # PDF version of FY24 Internal Data Collection Survey
+├── assets/                                             # Relevant files + images for project
+│   ├── budget_data_cleaning_procedure_20250502.pdf     # Procedural Document for Annual Process
+│   ├── FY2025_chart_of_acct_structure.pdf              # Supporting Document of Budget Hierarchy
+│   ├── program_inventory_internal_data_collection.pdf  # FY24 Internal Data Collection Survey
+│   ├── written_product_niekamp_20250502.pdf            # Written Product
 │   └── three_ps_niekamp.txt                            # Weekly Project Updates Log
 │
-├── cleaned_outputs/                                    # Final clean data used by the app + dashboard
+├── cleaned_outputs/                                    # Final clean data for app + dashboard
 │   ├── cleaned_expenditure_status.csv
 │   └── cleaned_program_inventory.csv
 │
-├── streamlit_app                                       # Digital product python files; internal training tool for city
+├── streamlit_app                                       # Digital product files; internal tool
 │   ├── assets/
 │   ├── digital_product_internal_tool.py
 │   ├── pages.py
@@ -34,7 +35,7 @@ CityofMissoulaBudgetCapstone/
 │   ├── style.py
 │   └── utils.py
 |
-├── data/                                               # Raw internal City of Missoula data (ignored)
+├── data/                                               # Raw City of Missoula data (ignored)
 │   └── *.xlsx
 │
 │── citydata_01_cleaning.ipynb                          # Narrated data cleaning process by step
@@ -44,11 +45,9 @@ CityofMissoulaBudgetCapstone/
 ```
 
 
-## Data Sources and Overview
-- FY24_Expenditure_Status.xlsx - Budget account-level data with activity, department and objective codes. Export from Tyler Edens.
-- Program_Inventory_Internal_Data_Collection.xlsx - Survey-based program intake / inventory that includes attributes about specific programming (mandates, trends, risks, etc.) Export from Workiva. 
-
-These files are exported from the City of Missoula's Workiva (Wdesk) instance and financial software accordingly. 
+## Data Sources Overview
+- **FY24_Expenditure_Status.xlsx**: Budget account-level data with activity, department and objective codes. Export from Tyler Edens.
+- **Program_Inventory_Internal_Data_Collection.xlsx**: Survey-based program intake / inventory that includes attributes about specific programming (mandates, trends, risks, etc.) Export from Workiva. 
 
 
 ## Methodology
@@ -72,19 +71,17 @@ The City of Missoula focuses on priority based budgeting practices. This is esse
 **Cost Recovery**: Indicates whether or not a program experiences any form of cost recovery meaning, a portion of program costs are offset by revenue sources.
 
 
-### Extraction Process
+### Annual Cleaning and Transformation Process
+
+While the process below is detailed for this repository, ultimately Google Colab was used to perform and carry out the final cleaning pipeline. 
+
 In order to begin a refreshed cycle of visualizing the City of Missoula's Program Inventory data, a City of Missoula employee follow the guidelines and tasks outlined in the supporting [budget data cleaning documentation](https://github.com/breannanpr/CityofMissoulaBudgetCapstone/blob/main/assets/budget_data_cleaning_procedure_20250502.pdf), provided to the city. 
 
 Once the steps are carried out, two cleaned files are uploaded into the the appropriate Sharepoint Site folder: ***"[Missoula PBI - City Program Inventory Budget Breakdown](https://cityofmissoulagcc.sharepoint.com/sites/MissoulaPBI/CPIBB/Forms/AllItems.aspx)"***. 
 
 After the process is completed in full, the user will have a fully updated interactive dashboard. 
 
-
-### Cleaning & Transformation Process
-
 All cleaning is conducted in Python using modular, documented functions that support automation and integration with the Power BI Platform. For a more comprehensive breakdown of each of the steps, please review the ```citydata_01_cleaning.ipynb``` in this repository. 
-
-While the process below is detailed for this repository, ultimately Google Colab was used to perform and carry out the final cleaning pipeline. 
 
 
 #### Steps Summary
@@ -98,9 +95,9 @@ tqdm, re, os, chardet           ## Cleaning utilities
 missingno, matplotlib.pyplot    ## EDA visual tools
 ```
 
-**Step 2:** Define Cleaning Functions
 
-Creating a set of helper functions reduced repetition and provides greater clarity, below are some notable functions used and an explanation of what they do. 
+**Step 2:** Define Cleaning Functions
+- Creating a set of helper functions reduced repetition and provides greater clarity, below are some notable functions used and an explanation of what they do. 
 
 ```
 drop_unnamed_columns()          ## Removes Excel filler columns
@@ -120,22 +117,20 @@ strip_whitespace_and_standardize() ## Cleans casing and trailing spaces
 remove_trailing_underscores()   ## Final polish on column names
 ```
 
-**Step 3:** Load Raw Files
 
-Reads in both Excel exports using ```openyxl```
+**Step 3:** Load Raw Files
+- Reads in both Excel exports using ```openyxl```
 
 
 **Step 4:** Expenditure Status Filtering
-
-Creates six individual filtering conditions on the Expenditure Status file; 
-- Removes subtotal/blank rows
-- Confirms numeric validity
-- Retains specific row and column combinations
+- Creates six individual filtering conditions on the Expenditure Status file; 
+    - Removes subtotal/blank rows
+    - Confirms numeric validity
+    - Retains specific row and column combinations
 
 
 **Step 5:** Account Code Decomposition
-
-Breaks out ```account_number``` within the Expenditure status data into:
+- Breaks out ```account_number``` within the Expenditure status data into:
 
 ```
 fund_no,                ## related to four digit fund code
@@ -151,26 +146,19 @@ sub_object_code         ## related to three digit sub budget object code
 
 
 **Step 6:** Program Inventory Header Expansion
-
-Converts wide format survey headers (e.g. "Mandate (E41, H41, E43)") into proper named fields
+- Converts wide format survey headers (e.g. "Mandate (E41, H41, E43)") into proper named fields
 
 
 **Step 7:** Clean Program Inventory
-
-Calls in our ```clean_program_inventory()``` function
-
-Standardizes IDs (```fund, dept_no, activity```)
-
-Fills empty responses with "blank" for BI compatibility
+- Calls in our ```clean_program_inventory()``` function
+- Standardizes IDs (```fund, dept_no, activity```)
+- Fills empty responses with "blank" for BI compatibility
 
 
 **Step 8:** Normalize Column Names
-
-Converts all columns to ```snake_case``` using ```janitor.clean_names()```
-
-Removes trailing _ characters
-
-Applies across both program and revenue workbooks
+- Converts all columns to ```snake_case``` using ```janitor.clean_names()```
+- Removes trailing _ characters
+- Applies across both program and revenue workbooks
 
 
 **Step 9:** Validate Structure
@@ -185,17 +173,14 @@ Spot checks confirm no corrupted rows or null-heavy fields
 
 
 **Step 10:** Apply Final Mappings
-
-Merges ```dept_map``` and ```fund_map``` for readability
-
-Unmapped entries are labeled "unmapped" for visibility
+- Merges ```dept_map``` and ```fund_map``` for readability
+- Unmapped entries are labeled "unmapped" for visibility
 
 
 **Step 11:** Export Cleaned Files
-
-Final files are saved to cleaned_outputs/ for use in:
-- Streamlit Hosted Internal Expenditure Status Training Tool
-- Power BI Dashboard
+- Final files are saved to cleaned_outputs/ for use in:
+    - Streamlit Hosted Internal Expenditure Status Training Tool
+    - Power BI Dashboard
 
 
 ## Streamlit Digital Product: Internal Training Tool
@@ -217,35 +202,30 @@ Explore:
 This partially manual and automatic data cleaning pipeline utilizes Google Colab as a data cleaning processor to host python code in an interactive environment for the employee carrying out the task. 
 
 **1. Beginning Extracting the Raw Data Files**
-
-Raw .xlsx files (Expenditure Status, Program Inventory) are extracted and saved within the employees desktop. 
-
-From here, they will navigate to the [Program Inventory and Expenditure Data Cleaning Notebook](https://colab.research.google.com/drive/1d5DcpU9pPE3S6YncbMMwBcjf7saI8NgW?usp=sharing) in Google Colab. 
-
-
-
-File format "Expenditure_Status.xlsx" for Expenditure Status. 
-
-File Format: "Program_Inventory_Internal_Data_Collection.xlsx" for Program Inventory. 
+- Raw .xlsx files (Expenditure Status, Program Inventory) are extracted and saved within the employees desktop. 
+    - File format "Expenditure_Status.xlsx" for Expenditure Status. 
+    - File Format: "Program_Inventory_Internal_Data_Collection.xlsx" for Program Inventory. 
 
 **NOTE: It is essential that these file names are accurate for the integrity of the data cleaning process. Overwrite existing file when dropping them into the SharePoint Library.**
 
-Once the up to date files are uploaded, step two will automatically begin the extraction, transformation / cleaning process and load the cleaned datasets into the green second folder located in the SharePoint Library. 
 
-**2. Power BI Python Script**
+**2. Navigate to Google Colab for Cleaning and Transformation**
+- [Program Inventory and Expenditure Data Cleaning Notebook](https://colab.research.google.com/drive/1d5DcpU9pPE3S6YncbMMwBcjf7saI8NgW?usp=sharing) in Google Colab. 
+- Google Colab will prompt the user to upload the required Excel files, then clean the files accordingly to the methodology used in this Repository. 
+- Once the cleaning process is complete, the user may download the cleaned .csv files
 
-*The Power BI Platform will:* 
-- Extract the raw files directly from SharePoint Library
-- Transform / Clean both raw data files, executing the same cleaning pipeline that is created here in this repository (/code/citydata_01_cleaning.py). 
-- Load the cleaned, in-memory dataframes used for dashboard visualizations into the SharePoint Library 02_cleaned_outputs *green* folder. 
+
+**3. Upload Clean Data to SharePoint**
+- Upload the cleaned files to the correct SharePoint folder **clean_data__outputs**, overwriting any pre-existing data and retaining the correct file names. 
+
+![Screenshot of SharePoint Library View](/assets/sharepoint_library_view.png)
 
 Once this process is complete, the dashboard should update to reflect the new data accordingly. 
 
-**3. No Pre-Clean Required**
 
-Users only need to upload raw files. The cleaning script takes care of the rest - cleaning, mapping, and shaping all the data in real-time. 
+**3. Refresh the Dashboard (Optional)**
 
-![Screenshot of SharePoint Library View](/assets/sharepoint_library_view.png)
+Once the files are uploaded properly the Dashboard should reflect the update, however if it does not users may refresh the data sources to showcase the new data visualization.
 
 
 ### Dashboard Features
@@ -263,92 +243,59 @@ The [Program Inventory and Expenditure Power BI Dashboard](https://app.powerbigo
 ![Placeholder for Dashboard Embedded View #2](assets/dashboard_view_02.png)
 
 
-## Exploratory Analysis
-The notebook [citydata_02_exploratory.ipynb](code/citydata_02_exploratory.ipynb) dives into the cleaned data to identify patterns, ensure data integrity, and inform both the app and dashboard. This step is essential for validating the success of the cleaning process and surfacing analytical insights before building visualizations.
+## Exploratory Analysis and Key Findings
+The notebook [citydata_02_exploratory.ipynb](code/citydata_02_exploratory.ipynb) dives into the cleaned data to identify patterns, ensure data integrity, and inform both the app and dashboard. The respository notebook contains well docummented narrative and breaks this process into a more detailed step-by-step process. 
+
+Exploratory analysis in general is an essential for validating the success of the cleaning process and surfacing analytical insights before building visualizations. The referenced notebook is summarized as follows:
 
 **Step 1: Load Data**
-Both cleaned CSVs are loaded from our ```cleaned_outputs``` file:
+- Both cleaned CSVs are loaded from our ```cleaned_outputs``` file:
 - cleaned_expenditure_status.csv
 - cleaned_program_inventory.csv
+    - ✅ Column names and data types are verified
+    - ✅ Expected shapes: ~2,185 expenditure rows, ~378 program rows
+    - ✅ Structure aligns with expectations, no null or corrupted columns
 
-✅ Column names and data types are verified
 
-✅ Expected shapes: ~2,200 expenditure rows, ~375 program rows
+**Steps 2 and 3: Data Structure, Health Checks and Summary Statistics**
+- Used ```info()``` and ```.describe()``` to assess completeness and distributions.
+- Confirmed all key fields (like ```dept_no, adjusted_appropriation, strategic_goal```) are usable.
+- Found most columns to be consistent and free of missing data.
+- Visual null-check: ```import missingno as msno``` and ```msno.matrix(df_programs)```
+    - Quickly confirms that most columns are complete and suitable for grouping and visualization.
 
-✅ Structure aligns with expectations, no null or corrupted columns
 
-**Step 2: Data Structure and Health Checks**
-Used ```info()``` and ```.describe()``` to assess completeness and distributions.
+**Step 4: Department Budget Trends**
+- Aggregated ```adjusted_appropriation``` by ```department``` to highlight areas of high-spend.
+    - 🟢 Findings: Several departments (e.g. Fire, Police, Public Works) dominate the budget allocation.
 
-Confirmed all key fields (like ```dept_no, adjusted_appropriation, strategic_goal```) are usable.
 
-Found most columns to be consistent and free of missing data.
-
-Visual null-check:
-```
-import missingno as msno
-msno.matrix(df_programs)
-```
-
-This quickly confirms that most columns are complete and suitable for grouping and visualization.
-
-**Step 3: Expenditure Trends**
-Aggregated ```adjusted_appropriation``` by ```department``` to highlight high-spend orgs.
-
-Identified which departments are driving the city’s core spending.
-```
-top_depts = df_expend.groupby('department')['adjusted_appropriation'].sum().sort_values(ascending=False)
-top_depts.plot(kind='barh')
-```
-
-🟢 Findings: Several departments (e.g. Fire, Police, Public Works) dominate the budget allocation.
-
-**Step 4: Strategic Program Review**
-Explored how many programs aligned with citywide strategic goals
-
-Grouped by ```strategic_goal_e66_name``` and ```risk_e93_type``` to understand complexity
+**Step 5: Program Review**
+- Explored how resources are spread across programs
+- Grouped by ```strategic_goal_e66_name``` and ```risk_e93_type``` to understand complexity
+- 🟡 Insight: Programs tied to housing and infrastructure were most common among strategic alignments.
 
 Example:
 ```
 df_programs['strategic_goal_e66_name'].value_counts().head(10)
 ```
 
-🟡 Insight: Programs tied to housing and infrastructure were most common among strategic alignments.
 
-**Step 5: Risk and Mandate Profiles**
-Evaluated how many programs were mandated and how many were high-risk.
+**Steps 6 through 13: Deeper Dive into Data
+- Budget Allocation Breakdown 
+- Mandate, Risk and Trend Distributions
+- FTE vs Total Spending 
+- Department-level Cost Recovery Overview
+- Combined Risk + Mandate Matrix
+- Heatmap of Risk and Trend (Demand) 
+- Flagging High-Investment and High-Risk Programs
 
-Compared cost/reliance of mandated vs. non-mandated programs.
-```
-sns.countplot(data=df_programs, x='mandate_e41_yn')
-sns.countplot(data=df_programs, y='risk_e93_type')
-```
 
-🔴 Risk Areas Identified:
-- Public health and grant-based programs showed higher exposure.
-- High personnel costs often correlated with risk-heavy programs.
-
-**Step 6: Program Cost Patterns**
-Analyzed ```personnel_g27``` vs ```ftes_h36``` to find high-cost, low-staff programs.
-
-Flagged outliers that might require further budgetary scrutiny.
-
-```
-sns.scatterplot(data=df_programs, x='ftes_h36', y='personnel_g27', hue='risk_e93_type')
-```
-
-💡 Pattern: Some strategic programs consume large personnel budgets without high FTE counts — signals for further review.
-
-**Summary of Insights**
-The cleaning pipeline was validated: no structural errors or major nulls.
-
-Expenditure is concentrated among a few departments and object types.
-
-Strategic goals align closely with staffing patterns.
-
-Risk analysis is a critical lens — high-cost programs often carry operational risks.
-
-The outputs informed both the Streamlit app logic and future Power BI dashboards.
+**Summary of Exploratory Insights**
+- The cleaning pipeline was validated: no structural errors or major nulls.
+- Expenditure is concentrated among a few departments and object types.
+- Strategic goals align closely with staffing patterns.
+- Risk analysis is a critical lens — high-cost programs often carry operational risks.
 
 
 ## Requirements
@@ -410,13 +357,14 @@ If you'd like to adapt this work to your city or department, feel free to fork t
 34. risk_e93_type: Identifies short-term risks and supporting notes; assesses potential challenges in the next 1-3 years (ex., funding cuts, staffing issues, legal changes).
 35. risk_e95_descript: Describes the risk type indicated in greater detail. 
 
+
 ### Appendix 1B: Cleaned Expenditure Status Data Columns 
 
-1. adjusted_appropriation: 
-2. fund_no: 
-3. dept_no: 
-4. activity_code: 
-5. object_code: 
-6. sub_object_code: 
-7. account_description: 
-8. department: 
+1. adjusted_appropriation: Final amended budget for each line item. 
+2. fund_no: Four digit code for the funding source (General Fund).
+3. dept_no: Three digit code for the responsible department.
+4. activity_code: Unique six digit code for linking specific programs or services. 
+5. object_code: Three digit code categorizing the type of expense. 
+6. sub_object_code: Subcategory for further detail within the object code.
+7. account_description: Label describing the nature of the expense. 
+8. department: full name of the department tied to ```dept_no```. 
