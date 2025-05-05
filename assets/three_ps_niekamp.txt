@@ -1,5 +1,16 @@
 ###############################
 
+# Progress, Problems and Plans for May 6, 2025
+
+Progress: Capstone Project Completed in full and delivered to client on Saturday, May 3, 2025! 
+Problems: None.
+Plans: Next stop, graduation! 
+
+Hours This Week: 31:05:42
+TOTAL Hours: 187.33
+
+###############################
+
 # Progress, Problems and Plans for April 29, 2025
 
 Progress: Finished dashboard and delivered to client, found a solution to automate part of the process and ensure that the work will be completed well, decided that Google Colab would be a good place to house the final python code.  
